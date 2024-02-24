@@ -1,3 +1,6 @@
+import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
+import { TuiRootModule, TuiDialogModule, TUI_SANITIZER } from '@taiga-ui/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { PageAddModule } from './page-add/page-add.module';
 import { PageAnalyticsModule } from './page-analytics/page-analytics.module';
 import { PageSettingsModule } from './page-settings/page-settings.module';
+import { PageFundsModule } from './page-funds/page-funds.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +21,14 @@ import { PageSettingsModule } from './page-settings/page-settings.module';
     AppRoutingModule,
     CoreModule,
     PageAddModule,
+    PageFundsModule,
     PageAnalyticsModule,
     PageSettingsModule,
+    BrowserAnimationsModule,
+    TuiRootModule,
+    TuiDialogModule
   ],
-  providers: [],
+  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
