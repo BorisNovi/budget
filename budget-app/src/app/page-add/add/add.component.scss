@@ -1,0 +1,33 @@
+.main__wrapper {
+
+  .main__form {
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid #aaa1;
+    border-radius: 16px;
+
+    .main__type {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &--header {
+        color: var(--tui-primary);
+      }
+    }
+
+    .main__display {
+      width: 100%;
+    }
+
+    .main__options {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

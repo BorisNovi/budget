@@ -1,50 +1,59 @@
 <div class="main__wrapper">
+
   <form class="main__form" [formGroup]="inputForm">
-    <div class="main__type">
-      switch
-    </div>
-    <div class="main__display">
-      <span class="main__display--currency">$</span><span class="main__display--value">
-        <tui-input-number
-        decimal="not-zero"
-        formControlName="money"
-        [precision]="2"
-        [postfix]="'GEL' | tuiCurrency"
-        [tuiTextfieldLabelOutside]="true"
-    >
-    </tui-input-number>
-      </span>
-    </div>
-    <div class="main__options">
-      <button
-        tuiIconButton
-        appearance="flat"
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="false"
-        icon="tuiIconEditLarge"
-      >
-      </button>
-  
-      <button
-        tuiIconButton
-        appearance="accent"
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="false"
-        icon="tuiIconCornerDownLeftLarge"
-      >
-      </button>
-  
-      <button
-        tuiIconButton
-        appearance="flat"
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="false"
-        icon="tuiIconCalendarLarge"
+      <div class="main__type">
+        <span class="main__type--header tui-text_body-xl">Add amount</span>
+        <tui-toggle
+        formControlName="expencesType"
+        [showIcons]="true"
+        [size]="'l'"
+        [singleColor]="true"
         >
-      </button>
-    </div>
+      </tui-toggle>
+      </div>
+      <div class="main__display">
+        <span class="main__display--value">
+          <tui-input-number
+            decimal="not-zero"
+            formControlName="money"
+            [precision]="2"
+            [postfix]="'GEL' | tuiCurrency"
+            [tuiTextfieldLabelOutside]="true"
+            >
+          </tui-input-number>
+        </span>
+      </div>
+      <div class="main__options">
+        <button
+          tuiIconButton
+          appearance="flat"
+          type="button"
+          class="tui-space_right-3"
+          [showLoader]="false"
+          icon="tuiIconEditLarge"
+        >
+        </button>
+    
+        <button
+          tuiIconButton
+          appearance="accent"
+          type="submit"
+          class="tui-space_right-3"
+          [showLoader]="false"
+          icon="tuiIconCornerDownLeftLarge"
+        >
+        </button>
+    
+        <button
+          tuiIconButton
+          appearance="flat"
+          type="button"
+          class="tui-space_right-3"
+          [showLoader]="false"
+          icon="tuiIconCalendarLarge"
+          >
+        </button>
+      </div>
   </form>
+
 </div>

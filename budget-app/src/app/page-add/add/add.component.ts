@@ -12,6 +12,7 @@ export class AddComponent {
     private formBuilder: FormBuilder,
   ) {
     this.inputForm = this.formBuilder.group({
+      expencesType: [true, []],
       money: ['', []],
 
     });
