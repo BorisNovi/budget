@@ -1,4 +1,6 @@
 .main__wrapper {
+  display: flex;
+  justify-content: center;
 
   .main__form {
     width: 300px;
@@ -15,8 +17,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
+      gap: 20px;
+
       &--header {
         color: var(--tui-primary);
+      }
+
+      &--group {
+        width: inherit;
       }
     }
 
@@ -29,5 +38,22 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+
+.datepicker-dialog {
+  &__calendar {}
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.comment-dialog {
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { TuiThemeNightService } from '@taiga-ui/addon-doc';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  constructor(@Inject(TuiThemeNightService) readonly night: TuiThemeNightService) {
+  }
 }

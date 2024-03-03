@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { TuiButtonModule, TuiLabelModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiCalendarModule, TuiDialogModule, TuiErrorModule, TuiGroupModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import {
   TuiInputModule,
   TuiInputNumberModule,
@@ -9,6 +9,8 @@ import {
   TuiToggleOptions,
   TUI_TOGGLE_DEFAULT_OPTIONS,
   TUI_TOGGLE_OPTIONS,
+  TuiFieldErrorPipeModule,
+  TuiRadioBlockModule,
 } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
@@ -38,7 +40,13 @@ const options: Partial<TuiToggleOptions> = {
     TuiButtonModule,
     TuiInputNumberModule,
     TuiTextfieldControllerModule,
-    TuiToggleModule,
+    TuiDialogModule,
+    TuiInputModule,
+    TuiCalendarModule,
+    TuiErrorModule,
+    TuiFieldErrorPipeModule,
+    TuiGroupModule,
+    TuiRadioBlockModule,
   ],
   providers: [
     {

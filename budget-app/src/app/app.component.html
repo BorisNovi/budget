@@ -1,3 +1,6 @@
-<tui-root>
-<router-outlet></router-outlet>
+
+<tui-theme-night *ngIf="night$ | async"></tui-theme-night>
+
+<tui-root [tuiMode]="mode">
+  <router-outlet></router-outlet>
 </tui-root>

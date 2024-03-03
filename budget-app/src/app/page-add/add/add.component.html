@@ -1,26 +1,46 @@
 <div class="main__wrapper">
 
-  <form class="main__form" [formGroup]="inputForm">
+  <form class="main__form"
+    [formGroup]="inputForm"
+    (ngSubmit)="submit()"
+    >
+
       <div class="main__type">
         <span class="main__type--header tui-text_body-xl">Add amount</span>
-        <tui-toggle
-        formControlName="expencesType"
-        [showIcons]="true"
-        [size]="'l'"
-        [singleColor]="true"
-        >
-      </tui-toggle>
+        <div
+          tuiGroup
+          class="main__type--group"
+          [adaptive]="true"
+          [collapsed]="true">
+          <tui-radio-block
+            formControlName="expencesType"
+            [item]="expenceItem"
+            size="m"
+            [hideRadio]="true"
+            >
+            Expence
+          </tui-radio-block>
+          <tui-radio-block
+            formControlName="expencesType"
+            [item]="incomeItem"
+            size="m"
+            [hideRadio]="true"
+            >
+            Income
+          </tui-radio-block>
+        </div>
       </div>
       <div class="main__display">
         <span class="main__display--value">
           <tui-input-number
             decimal="not-zero"
-            formControlName="money"
+            formControlName="amount"
             [precision]="2"
             [postfix]="'GEL' | tuiCurrency"
             [tuiTextfieldLabelOutside]="true"
             >
           </tui-input-number>
+          <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
         </span>
       </div>
       <div class="main__options">
@@ -31,9 +51,10 @@
           class="tui-space_right-3"
           [showLoader]="false"
           icon="tuiIconEditLarge"
+          (click)="showCommentDialog()"
         >
         </button>
-    
+
         <button
           tuiIconButton
           appearance="accent"
@@ -41,19 +62,87 @@
           class="tui-space_right-3"
           [showLoader]="false"
           icon="tuiIconCornerDownLeftLarge"
+          [disabled]="!inputForm.valid"
         >
         </button>
-    
+
         <button
           tuiIconButton
-          appearance="flat"
+          [appearance]="datepickerDate ? 'destructive' : 'flat'"
           type="button"
           class="tui-space_right-3"
           [showLoader]="false"
           icon="tuiIconCalendarLarge"
+          (click)="showDateDialog()"
           >
         </button>
       </div>
   </form>
 
 </div>
+
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{label: 'Select Date', size: 'auto'}"
+  [(tuiDialog)]="dateDialogOpen">
+  <form
+    class="datepicker-dialog"
+    [formGroup]="inputForm"
+    (ngSubmit)="observer.complete()">
+    <tui-calendar
+      class="datepicker-dialog__calendar"
+      [value]="datepickerDate"
+      (dayClick)="onDayClick($event)">
+    </tui-calendar>
+    <p
+      class="datepicker-dialog__buttons">
+      <button
+      tuiIconButton
+      appearance="destructive"
+      (click)="resetDate()"
+      icon="tuiIconXLarge">
+      </button>
+      <button
+        tuiIconButton
+        appearance="flat"
+        type="submit"
+        icon="tuiIconCheckLarge"
+        >
+      </button>
+    </p>
+  </form>
+</ng-template>
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{label: 'Comment', size: 's'}"
+  [(tuiDialog)]="commentDialogOpen">
+  <form
+    class="comment-dialog"
+    [formGroup]="inputForm"
+    (ngSubmit)="observer.complete()">
+    <tui-input
+      [tuiTextfieldLabelOutside]="true"
+      formControlName="comment">
+      <input placeholder="For smth..." tuiTextfield />
+    </tui-input>
+    <tui-error formControlName="comment" [error]="[] | tuiFieldError | async"></tui-error>
+    <p
+      class="comment-dialog__buttons">
+      <button
+      tuiIconButton
+      appearance="destructive"
+      (click)="resetComment()"
+      icon="tuiIconXLarge">
+      </button>
+      <button
+        tuiIconButton
+        appearance="flat"
+        type="submit"
+        icon="tuiIconCheckLarge"
+        >
+      </button>
+    </p>
+  </form>
+</ng-template>
