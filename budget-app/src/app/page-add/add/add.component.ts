@@ -4,11 +4,8 @@ import {
 } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
-
-enum ExpenceType {
-  expence = 'expence',
-  income = 'income',
-}
+import { ExpenceType } from '../../core/models/add.model';
+import { LocalService } from 'src/app/core/services/local.service';
 
 @Component({
   selector: 'app-add',
@@ -34,17 +31,18 @@ export class AddComponent {
   public dateDialogOpen = false;
   public commentDialogOpen = false;
   public datepickerDate: TuiDay | null = null;
-  private date = new Date();
-  private today = TuiDay.normalizeOf(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
+  private today = TuiDay.currentLocal();
 
   constructor(
     private formBuilder: FormBuilder,
+    private localService: LocalService,
   ) {
     this.inputForm = this.formBuilder.group({
       expencesType: [ExpenceType.expence, []],
       amount: [0, [Validators.required, Validators.min(0.01)]],
       date: [this.today, []],
-      comment: ['', [Validators.maxLength(40)]]
+      comment: ['', [Validators.maxLength(40)]],
+      category: ['', ]
     });
   }
 
@@ -71,9 +69,16 @@ export class AddComponent {
   }
 
   public submit(): void {
-    console.log(this.inputForm.value);
-    // TODO: Дальше пиши сервис для хранения данных в локальном хранилище
+    const completeData = {
+      ...this.inputForm.value,
+      timestamp: Date.parse(`${this.inputForm.value.date.month}.${this.inputForm.value.date.day}.${this.inputForm.value.date.year}`)
+    };
+
+    this.localService.set(completeData.expencesType, completeData);
+    // TODO: Сделать попап для выбора типа трат или доходов
     this.resetForm();
+
+    console.log(this.localService.get(ExpenceType.expence));
   }
 
   private resetForm(): void {
