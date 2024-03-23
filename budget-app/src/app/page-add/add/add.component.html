@@ -1,84 +1,83 @@
 <div class="main__wrapper">
+  <tui-island>
+    <form class="main__form"
+      [formGroup]="inputForm"
+      (ngSubmit)="showCategoryDialog()">
 
-  <form class="main__form"
-    [formGroup]="inputForm"
-    (ngSubmit)="showCategoryDialog()"
-    >
-
-      <div class="main__type">
-        <span class="main__type--header tui-text_body-xl">Add amount</span>
-        <div
-          tuiGroup
-          class="main__type--group"
-          [adaptive]="true"
-          [collapsed]="true">
-          <tui-radio-block
-            formControlName="expencesType"
-            [item]="expenceItem"
-            size="m"
-            [hideRadio]="true"
-            >
-            Expence
-          </tui-radio-block>
-          <tui-radio-block
-            formControlName="expencesType"
-            [item]="incomeItem"
-            size="m"
-            [hideRadio]="true"
-            >
-            Income
-          </tui-radio-block>
+        <div class="main__type">
+          <span class="main__type--header tui-text_body-xl">Add amount</span>
+          <div
+            tuiGroup
+            class="main__type--group"
+            [adaptive]="true"
+            [collapsed]="true">
+            <tui-radio-block
+              formControlName="expencesType"
+              [item]="expenceItem"
+              size="m"
+              [hideRadio]="true"
+              >
+              Expence
+            </tui-radio-block>
+            <tui-radio-block
+              formControlName="expencesType"
+              [item]="incomeItem"
+              size="m"
+              [hideRadio]="true"
+              >
+              Income
+            </tui-radio-block>
+          </div>
         </div>
-      </div>
-      <div class="main__display">
-        <span class="main__display--value">
-          <tui-input-number
-            decimal="not-zero"
-            formControlName="amount"
-            [precision]="2"
-            [postfix]="'GEL' | tuiCurrency"
-            [tuiTextfieldLabelOutside]="true"
-            >
-          </tui-input-number>
-          <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
-        </span>
-      </div>
-      <div class="main__options">
-        <button
-          tuiIconButton
-          appearance="flat"
-          type="button"
-          class="tui-space_right-3"
-          [showLoader]="false"
-          icon="tuiIconEditLarge"
-          (click)="showCommentDialog()"
-        >
-        </button>
-
-        <button
-          tuiIconButton
-          appearance="accent"
-          type="submit"
-          class="tui-space_right-3"
-          [showLoader]="false"
-          icon="tuiIconCornerDownLeftLarge"
-          [disabled]="!inputForm.valid"
-        >
-        </button>
-
-        <button
-          tuiIconButton
-          [appearance]="datepickerDate ? 'destructive' : 'flat'"
-          type="button"
-          class="tui-space_right-3"
-          [showLoader]="false"
-          icon="tuiIconCalendarLarge"
-          (click)="showDateDialog()"
+        <div class="main__display">
+          <span class="main__display--value">
+            <tui-input-number
+              decimal="not-zero"
+              formControlName="amount"
+              [precision]="2"
+              [postfix]="'GEL' | tuiCurrency"
+              [tuiTextfieldLabelOutside]="true"
+              >
+            </tui-input-number>
+            <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
+          </span>
+        </div>
+        <div class="main__options">
+          <button
+            tuiIconButton
+            appearance="flat"
+            type="button"
+            class="tui-space_right-3"
+            [showLoader]="false"
+            icon="tuiIconEditLarge"
+            (click)="showCommentDialog()"
           >
-        </button>
-      </div>
-  </form>
+          </button>
 
+          <button
+            tuiIconButton
+            appearance="accent"
+            type="submit"
+            class="tui-space_right-3"
+            [showLoader]="false"
+            icon="tuiIconCornerDownLeftLarge"
+            [disabled]="!inputForm.valid"
+          >
+          </button>
+
+          <button
+            tuiIconButton
+            [appearance]="datepickerDate ? 'destructive' : 'flat'"
+            type="button"
+            class="tui-space_right-3"
+            [showLoader]="false"
+            icon="tuiIconCalendarLarge"
+            (click)="showDateDialog()"
+            >
+          </button>
+        </div>
+    </form>
+  </tui-island>
 </div>
 
 

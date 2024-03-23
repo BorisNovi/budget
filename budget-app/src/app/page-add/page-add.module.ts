@@ -11,6 +11,7 @@ import {
   TUI_TOGGLE_OPTIONS,
   TuiFieldErrorPipeModule,
   TuiRadioBlockModule,
+  TuiIslandModule,
 } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
@@ -47,6 +48,7 @@ const options: Partial<TuiToggleOptions> = {
     TuiFieldErrorPipeModule,
     TuiGroupModule,
     TuiRadioBlockModule,
+    TuiIslandModule
   ],
   providers: [
     {
