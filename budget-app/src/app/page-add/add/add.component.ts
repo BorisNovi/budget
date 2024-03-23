@@ -4,8 +4,9 @@ import {
 } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
-import { ExpenceType } from '../../core/models/add.model';
 import { LocalService } from 'src/app/core/services/local.service';
+import { ExpencesCategories, IncomeCategories } from 'src/app/core/enums/categories.enum';
+import { ExpenceType } from '../../core/models/add.model';
 
 @Component({
   selector: 'app-add',
@@ -31,8 +32,8 @@ export class AddComponent {
   public dateDialogOpen = false;
   public commentDialogOpen = false;
   public categoryDialogOpen = false;
-  public expencesCategories: string[] = ['food', 'rent', 'enjoyment', 'transport', 'etc'];
-  public incomeCategories: string[] = ['business', 'sell', 'gifts', 'interest', 'etc'];
+  readonly expencesCategories: string[] = Object.values(ExpencesCategories);
+  readonly incomeCategories: string[] = Object.values(IncomeCategories);
   public datepickerDate: TuiDay | null = null;
   private today = TuiDay.currentLocal();
 
@@ -83,10 +84,10 @@ export class AddComponent {
     };
 
     this.localService.set(completeData.expencesType, completeData);
-    // TODO: Сделать попап для выбора типа трат или доходов
     this.resetForm();
 
-    console.log(this.localService.get(ExpenceType.expence));
+    console.log('expences:', this.localService.get(ExpenceType.expence));
+    console.log('incomes:', this.localService.get(ExpenceType.income));
   }
 
   private resetForm(): void {

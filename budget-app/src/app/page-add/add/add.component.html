@@ -155,7 +155,8 @@
     [formGroup]="inputForm"
     (ngSubmit)="observer.complete()">
     <div class="categories-dialog">
-      <div class="categories-dialog__wrapper" *ngFor="let category of expencesCategories">
+      <div class="categories-dialog__wrapper"
+        *ngFor="let category of inputForm.get('expencesType')?.value === expenceItem ? expencesCategories : incomeCategories">
         <button
         tuiButton
         type="submit"
