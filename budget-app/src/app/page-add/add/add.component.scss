@@ -57,3 +57,12 @@
     justify-content: space-between;
   }
 }
+
+.categories-dialog {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 5px;
+}

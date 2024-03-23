@@ -30,6 +30,9 @@ export class AddComponent {
   public inputForm: FormGroup;
   public dateDialogOpen = false;
   public commentDialogOpen = false;
+  public categoryDialogOpen = false;
+  public expencesCategories: string[] = ['food', 'rent', 'enjoyment', 'transport', 'etc'];
+  public incomeCategories: string[] = ['business', 'sell', 'gifts', 'interest', 'etc'];
   public datepickerDate: TuiDay | null = null;
   private today = TuiDay.currentLocal();
 
@@ -42,7 +45,7 @@ export class AddComponent {
       amount: [0, [Validators.required, Validators.min(0.01)]],
       date: [this.today, []],
       comment: ['', [Validators.maxLength(40)]],
-      category: ['', ]
+      category: ['', []]
     });
   }
 
@@ -54,7 +57,11 @@ export class AddComponent {
     this.commentDialogOpen = true;
   }
 
-  onDayClick(date: TuiDay): void {
+  public showCategoryDialog(): void {
+    this.categoryDialogOpen = true;
+  }
+
+  public onDayClick(date: TuiDay): void {
     this.datepickerDate = date;
     this.inputForm?.get('date')?.setValue(date);
   }
@@ -68,7 +75,8 @@ export class AddComponent {
     this.inputForm.get('comment')?.reset('');
   }
 
-  public submit(): void {
+  public submit(category: string): void {
+    this.inputForm?.get('category')?.setValue(category);
     const completeData = {
       ...this.inputForm.value,
       timestamp: Date.parse(`${this.inputForm.value.date.month}.${this.inputForm.value.date.day}.${this.inputForm.value.date.year}`)
