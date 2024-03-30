@@ -3,15 +3,20 @@
 
   <div class="analytics__date-selector">
     <button
+    class="analytics__date-selector__button"
     iconRight="tuiIconCalendar"
     appearance="destructive"
     tuiButton
+    size="m"
     type="button"
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="open"
     (click)="onDateSelectClick()"
     (tuiActiveZoneChange)="onDateActiveZone($event)"
     (tuiObscured)="onDateObscured($event)"
+    tuiDropdownAlign="center"
+    [tuiDropdownLimitWidth]="'fixed'"
+    [tuiDropdownOffset]="10"
 >
      {{ calendarValue.to !== calendarValue.from ? calendarValue.from + '-' + calendarValue.to : calendarValue.from }}
     <ng-template #dropdownContent>

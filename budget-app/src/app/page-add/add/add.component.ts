@@ -85,9 +85,6 @@ export class AddComponent {
 
     this.localService.set(completeData.expencesType, completeData);
     this.resetForm();
-
-    console.log('expences:', this.localService.get(ExpenceType.expence));
-    console.log('incomes:', this.localService.get(ExpenceType.income));
   }
 
   private resetForm(): void {

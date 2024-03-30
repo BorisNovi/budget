@@ -7,7 +7,7 @@ export enum ExpencesCategories {
   ENTERTAINMENT = 'entertainment',
   SOFT = 'soft',
   MEDICAL = 'medical',
-  ELSE = 'else'
+  ELSE = 'else',
 }
 
 export enum IncomeCategories {

@@ -19,11 +19,12 @@ export class AnalyticsComponent {
   private lastDayOfMonth = new TuiDay(this.today.year, this.today.month, this.daysInMonth);
   private currentMonthRange = new TuiDayRange(this.firstDayOfMonth, this.lastDayOfMonth);
 
-  constructor(private localService: LocalService) {
-    console.log('expences:', this.localService.get(ExpenceType.expence, this.firstDayOfMonth));
-    // console.log('incomes:', this.localService.get(ExpenceType.income));
+  private dataForAnalytics = this.localService.get(ExpenceType.expence, this.currentMonthRange.from, this.currentMonthRange.to);
 
-    // TODO: сделать так, чтобы введя диапазон, можно было выбрать траты за этот период.
+  constructor(private localService: LocalService) {
+    console.log(this.dataForAnalytics['res']);
+
+    console.log(this.dataForAnalytics['res'].filter(((item) => item.category === 'rent')));
   }
 
   // Dropdown
@@ -48,26 +49,43 @@ export class AnalyticsComponent {
   public calendarValue = this.currentMonthRange;
   public onRangeChange(value: TuiDayRange | null) {
     this.calendarValue = value || this.currentMonthRange;
+
+    // TODO: добавить переключение трат и поступлений. Исправить ошибку, если выбрана произвольная дата.
+    this.dataForAnalytics = this.localService.get(ExpenceType.expence, value?.from, value?.to);
+
+    this.value = this.fillAnalytics();
+    this.sum = tuiSum(...this.value);
   }
 
   // Analytics
-  readonly testData = this.localService.get(ExpenceType.expence);
-  readonly out = Object.values(this.testData);
-  readonly labels = Object.values(ExpencesCategories);
   public activeItemIndex = NaN;
+  readonly labels = Object.values(ExpencesCategories);
+  public value = this.fillAnalytics();
+  public sum = tuiSum(...this.value);
 
-  readonly value = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  readonly sum = tuiSum(...this.value);
-
-  isItemActive(index: number): boolean {
+  public isItemActive(index: number): boolean {
     return this.activeItemIndex === index;
   }
 
-  onHover(index: number, hovered: boolean): void {
+  public onHover(index: number, hovered: boolean): void {
     this.activeItemIndex = hovered ? index : 0;
   }
 
-  getColor(index: number): string {
-    return `var(--tui-chart-${index})`;
+  public getColor(index: number): string {
+    const maxColors = 10;
+    const currentIndex = index > maxColors ? index - maxColors : index;
+    return `var(--tui-chart-${currentIndex})`;
+  }
+
+  public fillAnalytics(): number[] {
+    const sums: number[] = [];
+    this.labels.forEach((label) => {
+      sums.push(this.dataForAnalytics['res']
+        .filter(((item) => item.category === label))
+        .map((item) => item.amount)
+        .reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+    });
+
+    return sums;
   }
 }
