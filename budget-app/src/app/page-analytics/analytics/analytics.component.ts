@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LocalService } from 'src/app/core/services/local.service';
-import { tuiSum } from '@taiga-ui/cdk';
+import { TuiDay, TuiDayRange, TuiMonth, tuiSum } from '@taiga-ui/cdk';
 import { ExpencesCategories } from 'src/app/core/enums/categories.enum';
 import { ExpenceType } from '../../core/models/add.model';
+import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-analytics',
@@ -11,15 +12,51 @@ import { ExpenceType } from '../../core/models/add.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnalyticsComponent {
-  readonly labels = Object.values(ExpencesCategories);
+  // Dates
+  private today = TuiDay.currentLocal();
+  private firstDayOfMonth = new TuiDay(this.today.year, this.today.month, 1);
+  private daysInMonth = new TuiMonth(this.today.year, this.today.month).daysCount;
+  private lastDayOfMonth = new TuiDay(this.today.year, this.today.month, this.daysInMonth);
+  private currentMonthRange = new TuiDayRange(this.firstDayOfMonth, this.lastDayOfMonth);
+
   constructor(private localService: LocalService) {
     console.log('expences:', this.localService.get(ExpenceType.expence));
     console.log('incomes:', this.localService.get(ExpenceType.income));
+
+    // TODO: сделать так, чтобы введя диапазон, можно было выбрать траты за этот период.
   }
 
-  activeItemIndex = NaN;
+  // Dropdown
+  public open = false;
 
-  readonly value = [13769, 12367, 10172, 3018, 2592, 2324, 34343, 34324, 3343];
+  public onDateSelectClick(): void {
+    this.open = !this.open;
+  }
+
+  public onDateObscured(obscured: boolean): void {
+    if (obscured) {
+      this.open = false;
+    }
+  }
+
+  public onDateActiveZone(active: boolean): void {
+    this.open = active && this.open;
+  }
+
+  // Calendar
+  public items = tuiCreateDefaultDayRangePeriods();
+  public calendarValue = this.currentMonthRange;
+  public onRangeChange(value: TuiDayRange | null) {
+    this.calendarValue = value || this.currentMonthRange;
+  }
+
+  // Analytics
+  readonly testData = this.localService.get(ExpenceType.expence);
+  readonly out = Object.values(this.testData);
+  readonly labels = Object.values(ExpencesCategories);
+  public activeItemIndex = NaN;
+
+  readonly value = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   readonly sum = tuiSum(...this.value);
 
   isItemActive(index: number): boolean {
