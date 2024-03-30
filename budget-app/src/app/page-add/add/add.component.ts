@@ -80,7 +80,7 @@ export class AddComponent {
     this.inputForm?.get('category')?.setValue(category);
     const completeData = {
       ...this.inputForm.value,
-      timestamp: Date.parse(`${this.inputForm.value.date.month}.${this.inputForm.value.date.day}.${this.inputForm.value.date.year}`)
+      dateStr: this.inputForm.value.date
     };
 
     this.localService.set(completeData.expencesType, completeData);

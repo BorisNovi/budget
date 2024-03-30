@@ -4,7 +4,7 @@ export interface IAdd {
   amount: number;
   expencesType: ExpenceType;
   date: TuiDay;
-  timestamp: string;
+  dateStr: string;
   comment: string;
   category: string;
 }

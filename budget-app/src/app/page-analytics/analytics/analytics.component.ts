@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LocalService } from 'src/app/core/services/local.service';
 import { TuiDay, TuiDayRange, TuiMonth, tuiSum } from '@taiga-ui/cdk';
 import { ExpencesCategories } from 'src/app/core/enums/categories.enum';
-import { ExpenceType } from '../../core/models/add.model';
 import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
+import { ExpenceType } from '../../core/models/add.model';
 
 @Component({
   selector: 'app-analytics',
@@ -20,8 +20,8 @@ export class AnalyticsComponent {
   private currentMonthRange = new TuiDayRange(this.firstDayOfMonth, this.lastDayOfMonth);
 
   constructor(private localService: LocalService) {
-    console.log('expences:', this.localService.get(ExpenceType.expence));
-    console.log('incomes:', this.localService.get(ExpenceType.income));
+    console.log('expences:', this.localService.get(ExpenceType.expence, this.firstDayOfMonth));
+    // console.log('incomes:', this.localService.get(ExpenceType.income));
 
     // TODO: сделать так, чтобы введя диапазон, можно было выбрать траты за этот период.
   }
