@@ -11,7 +11,6 @@
   --tui-chart-9: var(--tui-support-10);
 }
 
-
 .analytics {
   &__wrapper {
     display: flex;
@@ -19,12 +18,41 @@
     gap: 10px;
   }
 
-  &__date-selector {
-    &__button {
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__date-selector {
+      width: 100%;
+    }
+
+    &__group {
       width: 100%;
     }
   }
+
+  &__items {
+
+    &__chart-1 {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      @media (max-width: 425px) {
+        flex-direction: column;
+      }
+      &__ring {
+
+      }
+
+      &__legend {
+
+      }
+    }
+  }
 }
+
+
 
 .wrapper {
   display: flex;

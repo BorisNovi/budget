@@ -6,6 +6,7 @@ import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
 import { LocalService } from 'src/app/core/services/local.service';
 import { ExpencesCategories, IncomeCategories } from 'src/app/core/enums/categories.enum';
+import { CurrencyService } from 'src/app/core/services/currency.service';
 import { ExpenceType } from '../../core/models/add.model';
 
 @Component({
@@ -40,6 +41,7 @@ export class AddComponent {
   constructor(
     private formBuilder: FormBuilder,
     private localService: LocalService,
+    public cs: CurrencyService,
   ) {
     this.inputForm = this.formBuilder.group({
       expencesType: [ExpenceType.expence, []],

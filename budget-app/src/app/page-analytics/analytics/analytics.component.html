@@ -1,9 +1,9 @@
 <div class="analytics__wrapper">
   <h2>Analytics</h2>
 
-  <div class="analytics__date-selector">
+  <div class="analytics__buttons">
     <button
-    class="analytics__date-selector__button"
+    class="analytics__buttons__date-selector"
     iconRight="tuiIconCalendar"
     appearance="destructive"
     tuiButton
@@ -17,32 +17,54 @@
     tuiDropdownAlign="center"
     [tuiDropdownLimitWidth]="'fixed'"
     [tuiDropdownOffset]="10"
->
+    [tuiDropdownMaxHeight]="500">
      {{ calendarValue.to !== calendarValue.from ? calendarValue.from + '-' + calendarValue.to : calendarValue.from }}
-    <ng-template #dropdownContent>
-      <tui-calendar-range
-        (valueChange)="onRangeChange($event)"
-        [value]="calendarValue"
-        [items]="items">
-      </tui-calendar-range>
-    </ng-template>
-</button>
+      <ng-template #dropdownContent>
+        <tui-calendar-range
+          (valueChange)="onRangeChange($event)"
+          [value]="calendarValue"
+          [items]="items">
+        </tui-calendar-range>
+      </ng-template>
+    </button>
+
+    <div
+    tuiGroup
+    class="analytics__buttons__group"
+    [adaptive]="false"
+    [collapsed]="true">
+      <tui-radio-block
+        [item]="expenceItem"
+        size="s"
+        [formControl]="expenceForm"
+        [hideRadio]="true">
+        Expence
+      </tui-radio-block>
+      <tui-radio-block
+        [item]="incomeItem"
+        size="s"
+        [formControl]="expenceForm"
+        [hideRadio]="true">
+        Income
+      </tui-radio-block>
+    </div>
   </div>
 
   <div class="analytics__items">
-    <tui-island class="analytics">
+    <tui-island class="analytics__items__chart-1">
       <tui-ring-chart
+        class="analytics__items__chart-1__ring"
         [value]="value"
         [(activeItemIndex)]="activeItemIndex">
         <tui-money
             [singleColor]="true"
             [value]="sum"
-            currency="₾"
+            [currency]="cs.currency"
         ></tui-money>
         <div>Total</div>
       </tui-ring-chart>
 
-      <div class="legend">
+      <div class="analytics__items__chart-1__legend">
         <tui-legend-item
           *ngFor="let label of labels; let index = index"
           size="s"
@@ -52,6 +74,7 @@
           [text]="label"
           (tuiHoveredChange)="onHover(index, $event)">
           <tui-money
+            [currency]="cs.currency"
             [singleColor]="true"
             [value]="value[index]">
           </tui-money>

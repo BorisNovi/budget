@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { TuiButtonModule, TuiCalendarModule, TuiDialogModule, TuiErrorModule, TuiGroupModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule, TuiCalendarModule, TuiDialogModule, TuiErrorModule, TuiGroupModule, TuiTextfieldControllerModule
+} from '@taiga-ui/core';
 import {
   TuiInputModule,
   TuiInputNumberModule,
-  TuiToggleModule,
   TuiToggleOptions,
   TUI_TOGGLE_DEFAULT_OPTIONS,
   TUI_TOGGLE_OPTIONS,
@@ -28,27 +29,30 @@ const options: Partial<TuiToggleOptions> = {
   },
 };
 
+const tuiImports = [
+  TuiCurrencyPipeModule,
+  TuiButtonModule,
+  TuiInputNumberModule,
+  TuiTextfieldControllerModule,
+  TuiDialogModule,
+  TuiInputModule,
+  TuiCalendarModule,
+  TuiErrorModule,
+  TuiFieldErrorPipeModule,
+  TuiGroupModule,
+  TuiRadioBlockModule,
+  TuiIslandModule
+];
 @NgModule({
   declarations: [
     AddComponent
   ],
   imports: [
     CommonModule,
+    tuiImports,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    TuiCurrencyPipeModule,
-    TuiButtonModule,
-    TuiInputNumberModule,
-    TuiTextfieldControllerModule,
-    TuiDialogModule,
-    TuiInputModule,
-    TuiCalendarModule,
-    TuiErrorModule,
-    TuiFieldErrorPipeModule,
-    TuiGroupModule,
-    TuiRadioBlockModule,
-    TuiIslandModule
   ],
   providers: [
     {
