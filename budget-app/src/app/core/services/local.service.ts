@@ -35,7 +35,7 @@ export class LocalService {
 
       const result: IAdd[] = filteredKeys.flatMap((item) => JSON.parse(data)[item]);
 
-      return { res: result };
+      return { result };
     }
 
     return data ? JSON.parse(data) : {};

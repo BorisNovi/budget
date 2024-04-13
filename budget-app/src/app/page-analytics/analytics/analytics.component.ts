@@ -8,6 +8,7 @@ import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
 import { FormControl } from '@angular/forms';
 import { CurrencyService } from 'src/app/core/services/currency.service';
 import { ExpenceType } from '../../core/models/add.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-analytics',
@@ -57,24 +58,39 @@ export class AnalyticsComponent {
   public calendarValue = this.currentMonthRange;
 
   public onRangeChange(value: TuiDayRange | null) {
+    console.log('onRangeChange');
+
     this.calendarValue = value || this.currentMonthRange;
-
     this.getData(this.expenceForm.value);
-
-    this.value = this.fillAnalytics();
-    this.sum = tuiSum(...this.value);
   }
 
   // Analytics
   public activeItemIndex = NaN;
-  public labels = Object.values(ExpencesCategories);
-  public value = this.fillAnalytics();
-  public sum = tuiSum(...this.value);
+  public labelsOfExpences = Object.values(ExpencesCategories);
+  public sumsOfExpences = this.fillAnalytics();
+  public sum = tuiSum(...this.sumsOfExpences);
 
-  private getData(expenceType: ExpenceType) {
+  private getData(expenceType: ExpenceType): void {
+    console.log('getData');
+
     this.dataForAnalytics = this.localService.get(expenceType, this.calendarValue.from, this.calendarValue.to);
-    this.labels = Object.values(expenceType === ExpenceType.expence ? ExpencesCategories : IncomeCategories);
-    this.value = this.fillAnalytics();
+    this.labelsOfExpences = Object.values(expenceType === ExpenceType.expence ? ExpencesCategories : IncomeCategories);
+    this.sumsOfExpences = this.fillAnalytics();
+    this.sum = tuiSum(...this.sumsOfExpences);
+  }
+
+  public fillAnalytics(): number[] {
+    console.log('fillAnalytics');
+
+    const sums: number[] = [];
+    this.labelsOfExpences.forEach((label) => {
+      sums.push(this.dataForAnalytics['result']
+        .filter(((item) => item.category === label))
+        .map((item) => item.amount)
+        .reduce((accumulator, currentValue) => accumulator + currentValue, 0));
+    });
+
+    return sums;
   }
 
   public isItemActive(index: number): boolean {
@@ -89,17 +105,5 @@ export class AnalyticsComponent {
     const maxColors = 10;
     const currentIndex = index > maxColors ? index - maxColors : index;
     return `var(--tui-chart-${currentIndex})`;
-  }
-
-  public fillAnalytics(): number[] {
-    const sums: number[] = [];
-    this.labels.forEach((label) => {
-      sums.push(this.dataForAnalytics['res']
-        .filter(((item) => item.category === label))
-        .map((item) => item.amount)
-        .reduce((accumulator, currentValue) => accumulator + currentValue, 0));
-    });
-
-    return sums;
   }
 }

@@ -54,7 +54,7 @@
     <tui-island class="analytics__items__chart-1">
       <tui-ring-chart
         class="analytics__items__chart-1__ring"
-        [value]="value"
+        [value]="sumsOfExpences"
         [(activeItemIndex)]="activeItemIndex">
         <tui-money
             [singleColor]="true"
@@ -66,7 +66,7 @@
 
       <div class="analytics__items__chart-1__legend">
         <tui-legend-item
-          *ngFor="let label of labels; let index = index"
+          *ngFor="let label of labelsOfExpences; let index = index"
           size="s"
           class="item"
           [active]="isItemActive(index)"
@@ -76,10 +76,16 @@
           <tui-money
             [currency]="cs.currency"
             [singleColor]="true"
-            [value]="value[index]">
+            [value]="sumsOfExpences[index]">
           </tui-money>
         </tui-legend-item>
       </div>
     </tui-island>
+  </div>
+  <div>
+    <h5>Лог данных в аналитику</h5>
+    <span>Суммы трат / поступлений: </span><span>{{ sumsOfExpences | json }}</span>
+    <br>
+    <span>Лейблы трат / поступлений: </span><span>{{ labelsOfExpences | json }}</span>
   </div>
 </div>
