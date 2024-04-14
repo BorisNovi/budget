@@ -1,0 +1,12 @@
+.analytics {
+  &__axes {
+    height: 300px;
+
+    &__line-chart {}
+  }
+
+  @media (max-width: 425px) {
+
+  }
+
+}
