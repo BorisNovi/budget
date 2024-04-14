@@ -1,0 +1,31 @@
+
+<tui-island class="analytics__items__chart-1">
+  <tui-ring-chart
+    class="analytics__items__chart-1__ring"
+    [value]="sumsOfExpences"
+    [(activeItemIndex)]="activeItemIndex">
+    <tui-money
+        [singleColor]="true"
+        [value]="total"
+        [currency]="cs.currency"
+    ></tui-money>
+    <div>Total</div>
+  </tui-ring-chart>
+
+  <div class="analytics__items__chart-1__legend">
+    <tui-legend-item
+      *ngFor="let label of labelsOfExpences; let index = index"
+      size="s"
+      class="analytics__items__chart-1__legend__item"
+      [active]="isItemActive(index)"
+      [color]="getColor(index)"
+      [text]="label"
+      (tuiHoveredChange)="onHover(index, $event)">
+      <tui-money
+        [currency]="cs.currency"
+        [singleColor]="true"
+        [value]="sumsOfExpences[index]">
+      </tui-money>
+    </tui-legend-item>
+  </div>
+</tui-island>

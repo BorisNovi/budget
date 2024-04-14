@@ -8,6 +8,7 @@ import { TuiActiveZoneModule, TuiHoveredModule, TuiObscuredModule } from '@taiga
 import { TuiButtonModule, TuiDropdownModule, TuiGroupModule } from '@taiga-ui/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { AnalyticsRingLegendComponent } from './analytics-ring-legend/analytics-ring-legend.component';
 
 const routes = [
   { path: '', component: AnalyticsComponent },
@@ -29,7 +30,8 @@ const tuiImports = [
 ];
 @NgModule({
   declarations: [
-    AnalyticsComponent
+    AnalyticsComponent,
+    AnalyticsRingLegendComponent
   ],
   imports: [
     CommonModule,

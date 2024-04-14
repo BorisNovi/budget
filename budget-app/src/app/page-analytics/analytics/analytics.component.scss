@@ -33,44 +33,8 @@
   }
 
   &__items {
-
-    &__chart-1 {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      @media (max-width: 425px) {
-        flex-direction: column;
-      }
-      &__ring {
-
-      }
-
-      &__legend {
-
-      }
-    }
-  }
-}
-
-
-
-.wrapper {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
+    display: flex;
     flex-direction: column;
+    gap: 10px;
   }
-}
-
-.legend {
-  margin: 2rem 0 0 2rem;
-
-  @media (max-width: 768px) {
-    margin: 2rem 0 0;
-  }
-}
-
-.item {
-  margin: 0 0.5rem 0.75rem 0;
 }

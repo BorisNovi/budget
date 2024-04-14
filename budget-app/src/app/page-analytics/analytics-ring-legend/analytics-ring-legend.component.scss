@@ -1,0 +1,17 @@
+.analytics__items__chart-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+  }
+
+  &__ring {}
+
+  &__legend {
+    &__item {
+      margin: 0 0.5rem 0.75rem 0;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+import { Component, Input } from '@angular/core';
+import { CurrencyService } from 'src/app/core/services/currency.service';
+
+@Component({
+  selector: 'app-analytics-ring-legend',
+  templateUrl: './analytics-ring-legend.component.html',
+  styleUrls: ['./analytics-ring-legend.component.scss']
+})
+export class AnalyticsRingLegendComponent {
+  @Input() public sumsOfExpences!: number[];
+  @Input() public labelsOfExpences!: string[];
+  @Input() public total!: number;
+
+  public activeItemIndex = NaN;
+
+  constructor(public cs: CurrencyService) {}
+
+  public isItemActive(index: number): boolean {
+    return this.activeItemIndex === index;
+  }
+
+  public onHover(index: number, hovered: boolean): void {
+    this.activeItemIndex = hovered ? index : NaN;
+  }
+
+  public getColor(index: number): string {
+    const maxColors = 10;
+    const currentIndex = index > maxColors ? index - maxColors : index;
+    return `var(--tui-chart-${currentIndex})`;
+  }
+}
