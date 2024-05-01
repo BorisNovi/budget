@@ -4,22 +4,15 @@
     *ngIf="computeLabels$(range) | async as labels"
     class="analytics__axes"
     [axisXLabels]="labels"
-    [horizontalLines]="4"
+    [horizontalLines]="maxValue / 100"
     [verticalLines]="labels.length"
 >
     <tui-line-days-chart
         class="analytics__axes__line-chart"
-        [height]="200"
+        [height]="maxValue"
         [value]="value"
         [xStringify]="xStringify$ | async"
         [yStringify]="yStringify"
     ></tui-line-days-chart>
   </tui-axes>
 </tui-island>
-
-<div>
-  <br>
-  {{ labelsOfExpences | json }}
-  <br>
-  {{ sumsOfExpences | json }}
-</div>

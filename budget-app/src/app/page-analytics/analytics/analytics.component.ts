@@ -23,7 +23,7 @@ export class AnalyticsComponent {
   private currentMonthRange = new TuiDayRange(this.firstDayOfMonth, this.lastDayOfMonth);
 
   // Other
-  private dataForAnalytics = this.localService.get(ExpenceType.expence, this.currentMonthRange.from, this.currentMonthRange.to);
+  public dataForAnalytics = this.localService.get(ExpenceType.expence, this.currentMonthRange.from, this.currentMonthRange.to);
   public expenceForm: FormControl = new FormControl(ExpenceType.expence);
   readonly expenceItem = ExpenceType.expence;
   readonly incomeItem = ExpenceType.income;

@@ -57,9 +57,10 @@
       [total]="total">
     </app-analytics-ring-legend>
 
+    <!-- TODO: показывать нижнюю аналитику, только если выбрано от месяца -->
     <app-analytics-line-days
-      [labelsOfExpences]="labelsOfExpences"
-      [sumsOfExpences]="sumsOfExpences">
+      [dataForAnalyics]="dataForAnalytics"
+      [range]="calendarValue">
     </app-analytics-line-days>
   </div>
 </div>
