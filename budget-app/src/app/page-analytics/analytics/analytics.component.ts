@@ -52,7 +52,8 @@ export class AnalyticsComponent {
   }
 
   // Calendar
-  public items = tuiCreateDefaultDayRangePeriods();
+  public items = tuiCreateDefaultDayRangePeriods().filter(((item) => item['name'] !== 'For all the time'));
+
   public calendarValue = this.currentMonthRange;
 
   public onRangeChange(value: TuiDayRange | null) {

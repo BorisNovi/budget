@@ -27,6 +27,7 @@
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/no-explicit-any": 2,
         "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/dot-notation":"off",
         "max-len": 0,
         "@angular-eslint/directive-selector": [
           "error",
