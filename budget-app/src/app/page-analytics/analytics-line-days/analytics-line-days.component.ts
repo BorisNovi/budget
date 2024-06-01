@@ -12,7 +12,7 @@ import {
 import { TUI_MONTHS } from '@taiga-ui/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IAdd } from 'src/app/core/models/add.model';
+import { IAdd, ExpenceType } from 'src/app/core/models/add.model';
 import { CurrencyService } from 'src/app/core/services/currency.service';
 
 @Component({
@@ -62,6 +62,10 @@ export class AnalyticsLineDaysComponent implements AfterContentInit {
   private computeValue({ from, to }: TuiDayRange, data: { [timestamp: string]: IAdd[] }): ReadonlyArray<[TuiDay, number]> {
     const dataForAnalytics = data['result'];
     const groupedData = new Map<string, number>();
+
+    if (!dataForAnalytics.length) {
+      return [[TuiDay.currentLocal(), 0] as [TuiDay, number]];
+    }
 
     dataForAnalytics.forEach((item) => {
       const { dateStr, amount } = item;
