@@ -30,17 +30,18 @@
           </div>
         </div>
         <div class="main__display">
-          <span class="main__display--value">
-            <tui-input-number
-              decimal="not-zero"
-              formControlName="amount"
-              [precision]="2"
-              [postfix]="cs.currency"
-              [tuiTextfieldLabelOutside]="true"
-              >
-            </tui-input-number>
-            <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
-          </span>
+          <tui-input-number
+            class="main__display--value"
+            decimal="not-zero"
+            formControlName="amount"
+            [precision]="2"
+            [tuiTextfieldPostfix]="cs.currency"
+            [tuiTextfieldLabelOutside]="true"
+            tuiAutoFocus
+            [autofocus]="true"
+            >
+          </tui-input-number>
+          <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
         </div>
         <div class="main__options">
           <button

@@ -16,6 +16,7 @@ import {
 } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
+import { TuiAutoFocusModule } from '@taiga-ui/cdk';
 import { AddComponent } from './add/add.component';
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const tuiImports = [
   TuiFieldErrorPipeModule,
   TuiGroupModule,
   TuiRadioBlockModule,
-  TuiIslandModule
+  TuiIslandModule,
+  TuiAutoFocusModule
 ];
 @NgModule({
   declarations: [

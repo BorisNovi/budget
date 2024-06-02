@@ -12,7 +12,7 @@ import {
 import { TUI_MONTHS } from '@taiga-ui/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IAdd, ExpenceType } from 'src/app/core/models/add.model';
+import { IAdd } from 'src/app/core/models/add.model';
 import { CurrencyService } from 'src/app/core/services/currency.service';
 
 @Component({

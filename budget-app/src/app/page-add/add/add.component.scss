@@ -29,6 +29,12 @@
 
     .main__display {
       width: 100%;
+
+      &--value {
+        .t-textfield {
+          font-size: 1.5em;
+        }
+      }
     }
 
     .main__options {

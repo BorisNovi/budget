@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import {
   FormBuilder, FormGroup, Validators
 } from '@angular/forms';
@@ -13,6 +13,7 @@ import { ExpenceType } from '../../core/models/add.model';
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -45,7 +46,7 @@ export class AddComponent {
   ) {
     this.inputForm = this.formBuilder.group({
       expencesType: [ExpenceType.expence, []],
-      amount: [0, [Validators.required, Validators.min(0.01)]],
+      amount: [null, [Validators.required, Validators.min(0.01)]],
       date: [this.today, []],
       comment: ['', [Validators.maxLength(40)]],
       category: ['', []]
