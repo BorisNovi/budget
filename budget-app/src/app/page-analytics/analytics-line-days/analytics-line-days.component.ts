@@ -56,7 +56,7 @@ export class AnalyticsLineDaysComponent implements AfterContentInit {
     );
   }
 
-  readonly yStringify: TuiStringHandler<number> = (y) => `${(y).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${this.cs.currency}`;
+  readonly yStringify: TuiStringHandler<number> = (y) => `${(y).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${this.cs.currencyCode}`;
 
   @tuiPure
   private computeValue({ from, to }: TuiDayRange, data: { [timestamp: string]: IAdd[] }): ReadonlyArray<[TuiDay, number]> {

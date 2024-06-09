@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TuiButtonModule } from '@taiga-ui/core';
-import { TuiIslandModule } from '@taiga-ui/kit';
+import {
+  TuiButtonModule, TuiFlagPipeModule, TuiTextfieldControllerModule
+} from '@taiga-ui/core';
+import { TuiDataListWrapperModule, TuiIslandModule, TuiSelectModule } from '@taiga-ui/kit';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes = [
@@ -16,6 +19,11 @@ const routes = [
     CommonModule,
     TuiButtonModule,
     TuiIslandModule,
+    ReactiveFormsModule,
+    TuiSelectModule,
+    TuiFlagPipeModule,
+    TuiDataListWrapperModule,
+    TuiTextfieldControllerModule,
     RouterModule.forChild(routes),
   ]
 })

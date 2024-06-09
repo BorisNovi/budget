@@ -21,15 +21,20 @@
       <span class="settings__params__item__text">
         Currency
       </span>
-      <button
-        appearance="secondary-destructive"
-        tuiIconButton
-        [icon]=""
-        type="button"
-        class="settings__params__item__button"
-        (click)="null"
-      >
-      </button>
+      <form [formGroup]="currencyForm" class="settings__params__item__form-currency">
+        <tui-select formControlName="currencyType" [tuiTextfieldLabelOutside]="true" [tuiTextfieldCustomContent]="flag">
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="currencyTypes"
+          ></tui-data-list-wrapper>
+        </tui-select>
+      </form>
+      <ng-template #flag>
+        <img class="settings__params__item__form-currency__flag"
+        [alt]="currencyForm.controls.currencyType.value"
+        [src]="countryFlag === 'EU' ? 'assets/images/EU-flag.png' : countryFlag | tuiFlag"
+        />
+      </ng-template>
     </tui-island>
   </div>
 </div>

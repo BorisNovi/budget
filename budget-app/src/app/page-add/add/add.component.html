@@ -35,7 +35,7 @@
             decimal="not-zero"
             formControlName="amount"
             [precision]="2"
-            [tuiTextfieldPostfix]="cs.currency"
+            [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
             [tuiTextfieldLabelOutside]="true"
             tuiAutoFocus
             [autofocus]="true"

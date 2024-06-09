@@ -7,7 +7,7 @@
     <tui-money
         [singleColor]="true"
         [value]="total"
-        [currency]="cs.currency"
+        [currency]="cs.currencyCode"
     ></tui-money>
     <div>Total</div>
   </tui-ring-chart>
@@ -22,7 +22,7 @@
       [text]="label"
       (tuiHoveredChange)="onHover(index, $event)">
       <tui-money
-        [currency]="cs.currency"
+        [currency]="cs.currencyCode"
         [singleColor]="true"
         [value]="sumsOfExpences[index]">
       </tui-money>

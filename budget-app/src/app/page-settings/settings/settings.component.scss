@@ -19,6 +19,15 @@
       &__text {
         font-size: 1.2em;
       }
+
+      &__form-currency {
+        width: 60%;
+
+        &__flag {
+          width: 50%;
+          border-radius: 2px;
+        }
+      }
     }
   }
 }
