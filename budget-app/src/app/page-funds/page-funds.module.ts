@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TuiIslandModule } from '@taiga-ui/kit';
+import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { FundsComponent } from './funds/funds.component';
 
 const routes = [
@@ -8,11 +10,13 @@ const routes = [
 ];
 @NgModule({
   declarations: [
-    FundsComponent
+    FundsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    TuiIslandModule,
+    TuiCurrencyPipeModule,
   ]
 })
 export class PageFundsModule { }
