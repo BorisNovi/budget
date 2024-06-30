@@ -21,7 +21,7 @@ import { CurrencyService } from 'src/app/core/services/currency.service';
   styleUrls: ['./analytics-line-days.component.scss'],
 })
 export class AnalyticsLineDaysComponent implements AfterContentInit {
-  @Input() public dataForAnalyics!: { [timestamp: string]: IAdd[] };
+  @Input() public dataForAnalyics!: IAdd[];
   @Input() public range!: TuiDayRange;
 
   public maxValue = 0;
@@ -59,15 +59,14 @@ export class AnalyticsLineDaysComponent implements AfterContentInit {
   readonly yStringify: TuiStringHandler<number> = (y) => `${(y).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${this.cs.currencyCode}`;
 
   @tuiPure
-  private computeValue({ from, to }: TuiDayRange, data: { [timestamp: string]: IAdd[] }): ReadonlyArray<[TuiDay, number]> {
-    const dataForAnalytics = data['result'];
+  private computeValue({ from, to }: TuiDayRange, data: IAdd[]): ReadonlyArray<[TuiDay, number]> {
     const groupedData = new Map<string, number>();
 
-    if (!dataForAnalytics.length) {
+    if (!data || !data.length) {
       return [[TuiDay.currentLocal(), 0] as [TuiDay, number]];
     }
 
-    dataForAnalytics.forEach((item) => {
+    data.forEach((item) => {
       const { dateStr, amount } = item;
 
       if (groupedData.has(dateStr)) {

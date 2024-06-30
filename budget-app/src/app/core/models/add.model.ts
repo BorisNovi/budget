@@ -1,15 +1,11 @@
 import { TuiDay } from '@taiga-ui/cdk';
+import { ExpenceTypeKey } from '../enums';
 
 export interface IAdd {
   amount: number;
-  expencesType: ExpenceType;
+  expencesType: ExpenceTypeKey;
   date: TuiDay;
   dateStr: string;
   comment: string;
   category: string;
-}
-
-export enum ExpenceType {
-  expence = 'expence',
-  income = 'income',
 }

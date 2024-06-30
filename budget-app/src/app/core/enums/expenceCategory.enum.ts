@@ -1,4 +1,4 @@
-export enum ExpencesCategories {
+export enum ExpenceCategory {
   FOOD = 'food',
   RESTAURANT = 'restaurant',
   TRANSPORT = 'transport',
@@ -8,12 +8,5 @@ export enum ExpencesCategories {
   SOFT = 'soft',
   MEDICAL = 'medical',
   CLOTHES = 'clothes',
-  ELSE = 'else',
-}
-
-export enum IncomeCategories {
-  BUSINESS = 'business',
-  SELL = 'sell',
-  GIFTS = 'gifts',
   ELSE = 'else',
 }

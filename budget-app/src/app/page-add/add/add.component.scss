@@ -72,10 +72,6 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   gap: 5px;
-
-  &__button {
-    // width: 150px;
-  }
 }

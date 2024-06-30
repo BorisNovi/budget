@@ -3,10 +3,9 @@ import { LocalService } from 'src/app/core/services/local.service';
 import {
   TuiDay, TuiDayRange, TuiMonth, tuiSum
 } from '@taiga-ui/cdk';
-import { ExpencesCategories, IncomeCategories } from 'src/app/core/enums/categories.enum';
+import { ExpenceCategory, IncomeCategory, ExpenceTypeKey } from 'src/app/core/enums';
 import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
 import { FormControl } from '@angular/forms';
-import { ExpenceType } from '../../core/models/add.model';
 
 @Component({
   selector: 'app-analytics',
@@ -23,10 +22,10 @@ export class AnalyticsComponent {
   private currentMonthRange = new TuiDayRange(this.firstDayOfMonth, this.lastDayOfMonth);
 
   // Other
-  public dataForAnalytics = this.localService.get(ExpenceType.expence, this.currentMonthRange.from, this.currentMonthRange.to);
-  public expenceForm: FormControl = new FormControl(ExpenceType.expence);
-  readonly expenceItem = ExpenceType.expence;
-  readonly incomeItem = ExpenceType.income;
+  public dataForAnalytics = this.localService.getRangeSortedList(ExpenceTypeKey.EXPENCE, this.currentMonthRange.from, this.currentMonthRange.to);
+  public expenceForm: FormControl = new FormControl(ExpenceTypeKey.EXPENCE);
+  readonly expenceItem = ExpenceTypeKey.EXPENCE;
+  readonly incomeItem = ExpenceTypeKey.INCOME;
 
   constructor(private localService: LocalService) {
     this.expenceForm.valueChanges.subscribe((val) => {
@@ -62,13 +61,13 @@ export class AnalyticsComponent {
   }
 
   // Analytics
-  public labelsOfExpences = Object.values(ExpencesCategories);
+  public labelsOfExpences = Object.values(ExpenceCategory);
   public sumsOfExpences = this.fillAnalytics();
   public total = tuiSum(...this.sumsOfExpences);
 
-  private getData(expenceType: ExpenceType): void {
-    this.dataForAnalytics = this.localService.get(expenceType, this.calendarValue.from, this.calendarValue.to);
-    this.labelsOfExpences = Object.values(expenceType === ExpenceType.expence ? ExpencesCategories : IncomeCategories);
+  private getData(expenceType: ExpenceTypeKey): void {
+    this.dataForAnalytics = this.localService.getRangeSortedList(expenceType, this.calendarValue.from, this.calendarValue.to);
+    this.labelsOfExpences = Object.values(expenceType === ExpenceTypeKey.EXPENCE ? ExpenceCategory : IncomeCategory);
     this.sumsOfExpences = this.fillAnalytics();
     this.total = tuiSum(...this.sumsOfExpences);
   }
@@ -77,8 +76,8 @@ export class AnalyticsComponent {
     const sums: number[] = [];
 
     this.labelsOfExpences.forEach((label) => {
-      if (this.dataForAnalytics['result']) {
-        sums.push(this.dataForAnalytics['result']
+      if (this.dataForAnalytics) {
+        sums.push(this.dataForAnalytics
           .filter(((item) => item.category === label))
           .map((item) => item.amount)
           .reduce((accumulator, currentValue) => accumulator + currentValue, 0));
