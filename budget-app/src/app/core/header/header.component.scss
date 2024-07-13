@@ -1,20 +1,19 @@
-.header-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .header-buttons {
-    gap: 20px;
-    padding: 20px;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-  }
-
-  .header-settings {
-    display: flex;
-    gap: 20px;
+.header {
+  &__wrapper {
     padding: 20px;
   }
+
+  &__buttons {
+    // gap: 20px;
+    // padding: 20px;
+    // display: flex;
+    // justify-content:space-around;
+    // align-items: center;
+  }
+
+  &__button {
+
+  }
+
 }
 

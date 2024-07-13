@@ -1,11 +1,12 @@
-<div class="header-wrapper">
-  <nav class="header-buttons">
+<div class="header__wrapper">
+  <nav tuiGroup [collapsed]="true" class="header__buttons">
     <button
       appearance="secondary-destructive"
       tuiIconButton
+      size="m"
       icon="tuiIconPlusLarge"
       type="button"
-      class=""
+      class="header__button"
       routerLink="/"
       >
     </button>
@@ -13,9 +14,10 @@
     <button
       appearance="secondary-destructive"
       tuiIconButton
+      size="m"
       icon="tuiIconDollarSignLarge"
       type="button"
-      class=""
+      class="header__button"
       routerLink="/funds"
       >
     </button>
@@ -23,23 +25,23 @@
     <button
       appearance="secondary-destructive"
       tuiIconButton
+      size="m"
       icon="tuiIconBarChart2Large"
       type="button"
-      class=""
+      class="header__button"
       routerLink="/analytics"
       >
     </button>
-  </nav>
 
-  <div class="header-settings">
     <button
-      appearance="secondary-destructive"
-      tuiIconButton
-      icon="tuiIconSettingsLarge"
-      type="button"
-      class=""
-      routerLink="/settings"
-      >
-    </button>
-  </div>
+    appearance="secondary-destructive"
+    tuiIconButton
+    size="m"
+    icon="tuiIconSettingsLarge"
+    type="button"
+    class="header__button tui-group__auto-width-item"
+    routerLink="/settings"
+    >
+  </button>
+  </nav>
 </div>
