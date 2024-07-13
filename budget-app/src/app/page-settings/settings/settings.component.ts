@@ -1,14 +1,18 @@
-import { Component, DestroyRef, Inject } from '@angular/core';
+import {
+  Component, DestroyRef, Inject, ChangeDetectionStrategy
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiThemeNightService } from '@taiga-ui/addon-doc';
 import { CurrencyService } from 'src/app/core/services/currency.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TuiCurrency } from '@taiga-ui/addon-commerce';
+import { ExpenceTypeKey } from '../../core/enums';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent {
   public currencyForm = new FormGroup({
@@ -17,6 +21,8 @@ export class SettingsComponent {
 
   public currencyTypes: string[] = Object.keys(TuiCurrency);
   public countryFlag = 'US';
+
+  public deleteDialogOpen = false;
 
   constructor(
     @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
@@ -37,5 +43,16 @@ export class SettingsComponent {
   private setFlag(): void {
     const currencyCode = TuiCurrency[this.currencyForm.controls.currencyType.value as keyof typeof TuiCurrency];
     this.countryFlag = currencyCode.slice(0, 2);
+  }
+
+  public showDeleteDialog(): void {
+    this.deleteDialogOpen = true;
+  }
+
+  public deleteData(): void {
+    localStorage.removeItem(ExpenceTypeKey.EXPENCE);
+    localStorage.removeItem(ExpenceTypeKey.INCOME);
+
+    this.deleteDialogOpen = false;
   }
 }

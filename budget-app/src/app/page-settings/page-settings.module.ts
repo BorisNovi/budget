@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
-  TuiButtonModule, TuiFlagPipeModule, TuiTextfieldControllerModule
+  TuiButtonModule, TuiDialogModule, TuiFlagPipeModule, TuiTextfieldControllerModule
 } from '@taiga-ui/core';
 import { TuiDataListWrapperModule, TuiIslandModule, TuiSelectModule } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ const routes = [
     TuiIslandModule,
     ReactiveFormsModule,
     TuiSelectModule,
+    TuiDialogModule,
     TuiFlagPipeModule,
     TuiDataListWrapperModule,
     TuiTextfieldControllerModule,

@@ -6,14 +6,9 @@
       <span class="settings__params__item__text">
         Teheme
       </span>
-      <button
-        appearance="secondary-destructive"
-        tuiIconButton
-        [icon]="night.storage['tuiNight'] === 'true' ? 'tuiIconSunLarge' : 'tuiIconMoonLarge'"
-        type="button"
-        class="settings__params__item__button"
-        (click)="night.toggle()"
-      >
+      <button appearance="secondary-destructive" tuiIconButton
+        [icon]="night.storage['tuiNight'] === 'true' ? 'tuiIconSunLarge' : 'tuiIconMoonLarge'" type="button"
+        class="settings__params__item__button" (click)="night.toggle()">
       </button>
     </tui-island>
 
@@ -23,18 +18,35 @@
       </span>
       <form [formGroup]="currencyForm" class="settings__params__item__form-currency">
         <tui-select formControlName="currencyType" [tuiTextfieldLabelOutside]="true" [tuiTextfieldCustomContent]="flag">
-          <tui-data-list-wrapper
-            *tuiDataList
-            [items]="currencyTypes"
-          ></tui-data-list-wrapper>
+          <tui-data-list-wrapper *tuiDataList [items]="currencyTypes"></tui-data-list-wrapper>
         </tui-select>
       </form>
       <ng-template #flag>
-        <img class="settings__params__item__form-currency__flag"
-        [alt]="currencyForm.controls.currencyType.value"
-        [src]="countryFlag === 'EU' ? 'assets/images/EU-flag.png' : countryFlag | tuiFlag"
-        />
+        <img class="settings__params__item__form-currency__flag" [alt]="currencyForm.controls.currencyType.value"
+          [src]="countryFlag === 'EU' ? 'assets/images/EU-flag.png' : countryFlag | tuiFlag" />
       </ng-template>
+    </tui-island>
+
+    <tui-island class="settings__params__item">
+      <span class="settings__params__item__text">
+        Delete data
+      </span>
+      <button appearance="secondary-destructive" tuiIconButton icon="tuiIconTrash" type="button"
+        class="settings__params__item__button" (click)="showDeleteDialog()">
+      </button>
     </tui-island>
   </div>
 </div>
+
+
+<ng-template let-observer [tuiDialogOptions]="{label: 'You can\'t recover it!', size: 'm',}"
+  [(tuiDialog)]="deleteDialogOpen">
+  <div class="settings-dialog__wrapper">
+    <button tuiButton type="button" appearance="accent" (click)="deleteData()" class="settings-dialog__button">
+      <span>Delete</span>
+    </button>
+    <button tuiButton type="button" appearance="outline" (click)="observer.complete()" class="settings-dialog__button">
+      <span>Cancel</span>
+    </button>
+  </div>
+</ng-template>
