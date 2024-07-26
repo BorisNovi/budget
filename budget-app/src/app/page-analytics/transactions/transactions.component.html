@@ -1,0 +1,34 @@
+<div class="transactions__wrapper">
+  <h2>Transactions</h2>
+
+  <div class="table__options">
+    some options. Select of types and funds
+  </div>
+
+  <div class="table__wrapper">
+    <table class="tui-table">
+      <tbody>
+          <tr class="tui-table__tr tui-table__tr">
+              <th class="tui-table__th tui-table__th_first">№</th>
+              <th class="tui-table__th">Date</th>
+              <th class="tui-table__th">Category</th>
+              <th class="tui-table__th">Amount</th>
+              <th class="tui-table__th tui-table__th">Comment</th>
+              <th class="tui-table__th tui-table__th_last">Action</th>
+
+          </tr>
+          <tr class="tui-table__tr tui-table__tr_border_none" *ngFor="let transaction of transactionList; let i = index">
+              <td class="tui-table__td tui-table__td_first">{{i + 1}}</td>
+              <td class="tui-table__td">{{transaction.date + '' | date: 'dd.MM.YYYY'}}</td>
+              <td class="tui-table__td">{{transaction.category}}</td>
+              <td class="tui-table__td">{{transaction.amount}}</td>
+              <td class="tui-table__td tui-table__td">{{transaction.comment}}</td>
+              <td class="tui-table__td tui-table__td_last">
+                <button tuiIconButton appearance="none" icon="tuiIconMoreHorizontalLarge" type="button" size="s">
+                </button>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

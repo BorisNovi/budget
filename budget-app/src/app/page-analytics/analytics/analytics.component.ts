@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LocalService } from 'src/app/core/services/local.service';
-import {
-  TuiDay, TuiDayRange, TuiMonth, tuiSum
-} from '@taiga-ui/cdk';
+import { TuiDayRange, tuiSum } from '@taiga-ui/cdk';
 import { ExpenceCategory, IncomeCategory, ExpenceTypeKey } from 'src/app/core/enums';
 import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
 import { FormControl } from '@angular/forms';
+import { CalendarLocalService } from 'src/app/core/services/calendar-local.service';
 
 @Component({
   selector: 'app-analytics',
@@ -15,11 +14,8 @@ import { FormControl } from '@angular/forms';
 })
 export class AnalyticsComponent {
   // Dates
-  private today = TuiDay.currentLocal();
-  private firstDayOfMonth = new TuiDay(this.today.year, this.today.month, 1);
-  private daysInMonth = new TuiMonth(this.today.year, this.today.month).daysCount;
-  private lastDayOfMonth = new TuiDay(this.today.year, this.today.month, this.daysInMonth);
-  private currentMonthRange = new TuiDayRange(this.firstDayOfMonth, this.lastDayOfMonth);
+  private currentMonthRange = this.calendarLocalService.currentMonthRange;
+  // TODO: добавить использование сервиса сохранения выбранного дипапзона календаря CalendarLocalService
 
   // Other
   public dataForAnalytics = this.localService.getRangeSortedList(ExpenceTypeKey.EXPENCE, this.currentMonthRange.from, this.currentMonthRange.to);
@@ -27,7 +23,7 @@ export class AnalyticsComponent {
   readonly expenceItem = ExpenceTypeKey.EXPENCE;
   readonly incomeItem = ExpenceTypeKey.INCOME;
 
-  constructor(private localService: LocalService) {
+  constructor(private localService: LocalService, private calendarLocalService: CalendarLocalService) {
     this.expenceForm.valueChanges.subscribe((val) => {
       this.getData(val);
     });
@@ -57,6 +53,8 @@ export class AnalyticsComponent {
 
   public onRangeChange(value: TuiDayRange | null) {
     this.calendarValue = value || this.currentMonthRange;
+
+    this.calendarLocalService.saveRange(this.calendarValue);
     this.getData(this.expenceForm.value);
   }
 

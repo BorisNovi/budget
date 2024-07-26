@@ -12,9 +12,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AnalyticsRingLegendComponent } from './analytics-ring-legend/analytics-ring-legend.component';
 import { AnalyticsLineDaysComponent } from './analytics-line-days/analytics-line-days.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 const routes = [
   { path: '', component: AnalyticsComponent },
+  { path: 'transactions', component: TransactionsComponent }
 ];
 
 const tuiImports = [
@@ -37,7 +39,8 @@ const tuiImports = [
   declarations: [
     AnalyticsComponent,
     AnalyticsRingLegendComponent,
-    AnalyticsLineDaysComponent
+    AnalyticsLineDaysComponent,
+    TransactionsComponent
   ],
   imports: [
     CommonModule,

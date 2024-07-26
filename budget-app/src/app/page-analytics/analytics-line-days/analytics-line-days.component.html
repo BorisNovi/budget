@@ -4,7 +4,7 @@
     *ngIf="computeLabels$(range) | async as labels"
     class="analytics__axes"
     [axisXLabels]="labels"
-    [horizontalLines]="maxValue / 100"
+    [horizontalLines]="10"
     [verticalLines]="labels.length"
 >
     <tui-line-days-chart
