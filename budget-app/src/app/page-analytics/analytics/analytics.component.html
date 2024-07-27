@@ -28,24 +28,18 @@
       </ng-template>
     </button>
 
-    <div
-    tuiGroup
-    class="analytics__buttons__group"
-    [adaptive]="false"
-    [collapsed]="true">
-      <tui-radio-block
-        [item]="expenceItem"
-        size="s"
-        [formControl]="expenceForm"
-        [hideRadio]="true">
+    <div tuiGroup class="analytics__buttons__group" [adaptive]="false" [collapsed]="true">
+      <tui-radio-block [item]="expenceItem" size="s" [formControl]="expenceForm" [hideRadio]="true">
         Expence
+        <a tuiIconButton routerLink="/analytics/transactions" [queryParams]="{ expenceTypeKey: expenceItem }"
+          class="analytics__buttons__options left" appearance="flat" icon="tuiIconListLarge" size="s">
+        </a>
       </tui-radio-block>
-      <tui-radio-block
-        [item]="incomeItem"
-        size="s"
-        [formControl]="expenceForm"
-        [hideRadio]="true">
+      <tui-radio-block [item]="incomeItem" size="s" [formControl]="expenceForm" [hideRadio]="true">
         Income
+        <a tuiIconButton routerLink="/analytics/transactions" [queryParams]="{ expenceTypeKey: incomeItem }"
+          class="analytics__buttons__options right" appearance="flat" icon="tuiIconListLarge" size="s">
+        </a>
       </tui-radio-block>
     </div>
   </div>
