@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TuiDay } from '@taiga-ui/cdk';
-import { IAdd } from '../models/add.model';
+import { IAdd } from 'src/app/common';
 
 @Injectable({
   providedIn: 'root'

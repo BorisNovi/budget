@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CurrencyService } from 'src/app/core/services/currency.service';
+import { CurrencyService } from 'src/app/common';
 import { IFund } from '../models/funds.model';
 
 @Component({

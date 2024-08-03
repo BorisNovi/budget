@@ -5,14 +5,16 @@ import { TuiCalendarRangeModule, TuiIslandModule, TuiRadioBlockModule } from '@t
 import {
   TuiAxesModule, TuiLegendItemModule, TuiLineDaysChartModule, TuiRingChartModule
 } from '@taiga-ui/addon-charts';
-import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
+import { TuiCurrencyPipeModule, TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { TuiActiveZoneModule, TuiHoveredModule, TuiObscuredModule } from '@taiga-ui/cdk';
 import { TuiButtonModule, TuiDropdownModule, TuiGroupModule } from '@taiga-ui/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TuiTableModule } from '@taiga-ui/addon-table';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AnalyticsRingLegendComponent } from './analytics-ring-legend/analytics-ring-legend.component';
 import { AnalyticsLineDaysComponent } from './analytics-line-days/analytics-line-days.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { ShortNumsPipe } from '../common';
 
 const routes = [
   { path: '', component: AnalyticsComponent },
@@ -34,18 +36,21 @@ const tuiImports = [
   TuiRadioBlockModule,
   TuiAxesModule,
   TuiLineDaysChartModule,
+  TuiCurrencyPipeModule,
+  TuiTableModule
 ];
 @NgModule({
   declarations: [
     AnalyticsComponent,
     AnalyticsRingLegendComponent,
     AnalyticsLineDaysComponent,
-    TransactionsComponent
+    TransactionsComponent,
   ],
   imports: [
     CommonModule,
     tuiImports,
     ReactiveFormsModule,
+    ShortNumsPipe,
     RouterModule.forChild(routes),
   ]
 })

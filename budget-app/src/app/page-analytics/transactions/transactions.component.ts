@@ -1,10 +1,13 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, DestroyRef, OnInit
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExpenceTypeKey } from 'src/app/core/enums';
-import { IAdd } from 'src/app/core/models/add.model';
-import { CalendarLocalService } from 'src/app/core/services/calendar-local.service';
-import { LocalService } from 'src/app/core/services/local.service';
+import { BehaviorSubject } from 'rxjs';
+import {
+  IAdd, CalendarLocalService, LocalService, ExpenceTypeKey,
+  CurrencyService
+} from 'src/app/common';
 
 @Component({
   selector: 'app-transactions',
@@ -15,7 +18,16 @@ import { LocalService } from 'src/app/core/services/local.service';
 export class TransactionsComponent implements OnInit {
   public transactionList: IAdd[] = [];
   public expenceTypeKey: ExpenceTypeKey = ExpenceTypeKey.EXPENCE;
-  constructor(private route: ActivatedRoute, private router: Router, private destroyRef: DestroyRef, private localService: LocalService, private calendarLocalService: CalendarLocalService) { }
+  public showDeleteTemplateIndex = new BehaviorSubject(-1);
+  public isDeleteAllowed = false;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private destroyRef: DestroyRef,
+    private localService: LocalService,
+    public calendarLocalService: CalendarLocalService,
+    public cs: CurrencyService
+  ) { }
 
   ngOnInit(): void {
     const { savedRange } = this.calendarLocalService;
@@ -33,5 +45,13 @@ export class TransactionsComponent implements OnInit {
 
     console.log(savedRange);
     console.log(this.transactionList);
+  }
+
+  public wannaDelete(index: number): void {
+    this.showDeleteTemplateIndex.next(index);
+  }
+
+  public delete(transaction: IAdd): void {
+    console.log(transaction);
   }
 }

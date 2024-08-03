@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CurrencyService } from 'src/app/core/services/currency.service';
+import { CurrencyService } from 'src/app/common';
 
 @Component({
   selector: 'app-analytics-ring-legend',

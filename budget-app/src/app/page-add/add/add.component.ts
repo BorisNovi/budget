@@ -4,9 +4,9 @@ import {
 } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
-import { LocalService } from 'src/app/core/services/local.service';
-import { CurrencyService } from 'src/app/core/services/currency.service';
-import { ExpenceCategory, IncomeCategory, ExpenceTypeKey } from 'src/app/core/enums';
+import {
+  LocalService, CurrencyService, ExpenceCategory, IncomeCategory, ExpenceTypeKey
+} from 'src/app/common';
 
 @Component({
   selector: 'app-add',

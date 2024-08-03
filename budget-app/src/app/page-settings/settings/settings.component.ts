@@ -3,10 +3,9 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiThemeNightService } from '@taiga-ui/addon-doc';
-import { CurrencyService } from 'src/app/core/services/currency.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TuiCurrency } from '@taiga-ui/addon-commerce';
-import { ExpenceTypeKey } from '../../core/enums';
+import { CurrencyService, ExpenceTypeKey} from 'src/app/common';
 
 @Component({
   selector: 'app-settings',

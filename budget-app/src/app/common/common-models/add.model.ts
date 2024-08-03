@@ -1,5 +1,5 @@
 import { TuiDay } from '@taiga-ui/cdk';
-import { ExpenceTypeKey } from '../enums';
+import { ExpenceTypeKey } from '../common-enums/expenceTypeKey.enum';
 
 export interface IAdd {
   amount: number;

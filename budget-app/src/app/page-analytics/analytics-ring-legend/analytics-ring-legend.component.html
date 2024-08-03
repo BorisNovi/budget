@@ -4,11 +4,7 @@
     class="analytics__items__chart-1__ring"
     [value]="sumsOfExpences"
     [(activeItemIndex)]="activeItemIndex">
-    <tui-money
-        [singleColor]="true"
-        [value]="total"
-        [currency]="cs.currencyCode"
-    ></tui-money>
+    <div>{{ total | short_nums }} {{ cs.currencyCode | tuiCurrency }}</div>
     <div>Total</div>
   </tui-ring-chart>
 
@@ -21,11 +17,7 @@
       [color]="getColor(index)"
       [text]="label"
       (tuiHoveredChange)="onHover(index, $event)">
-      <tui-money
-        [currency]="cs.currencyCode"
-        [singleColor]="true"
-        [value]="sumsOfExpences[index]">
-      </tui-money>
+      <div>{{ sumsOfExpences[index] | short_nums }} {{ cs.currencyCode | tuiCurrency }}</div>
     </tui-legend-item>
   </div>
 </tui-island>

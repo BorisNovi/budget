@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { LocalService } from 'src/app/core/services/local.service';
+import {
+  LocalService, CalendarLocalService, ExpenceCategory, IncomeCategory, ExpenceTypeKey
+} from 'src/app/common';
 import { TuiDayRange, tuiSum } from '@taiga-ui/cdk';
-import { ExpenceCategory, IncomeCategory, ExpenceTypeKey } from 'src/app/core/enums';
 import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
 import { FormControl } from '@angular/forms';
-import { CalendarLocalService } from 'src/app/core/services/calendar-local.service';
 
 @Component({
   selector: 'app-analytics',

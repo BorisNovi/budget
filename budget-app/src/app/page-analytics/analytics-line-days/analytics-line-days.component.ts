@@ -12,8 +12,7 @@ import {
 import { TUI_MONTHS } from '@taiga-ui/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IAdd } from 'src/app/core/models/add.model';
-import { CurrencyService } from 'src/app/core/services/currency.service';
+import { IAdd, CurrencyService } from 'src/app/common';
 
 @Component({
   selector: 'app-analytics-line-days',
