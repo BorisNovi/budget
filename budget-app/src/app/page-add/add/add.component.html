@@ -33,7 +33,8 @@
           <tui-input-number
             class="main__display--value"
             decimal="not-zero"
-            [inputMode]="'numeric'"
+            inputmode="decimal"
+            [inputMode]="'decimal'"
             formControlName="amount"
             [precision]="2"
             [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
@@ -44,6 +45,7 @@
           </tui-input-number>
           <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
         </div>
+        <input type="number">
         <div class="main__options">
           <button
             tuiIconButton
