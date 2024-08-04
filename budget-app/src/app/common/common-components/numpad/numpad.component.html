@@ -1,0 +1,9 @@
+<div *ngFor="let row of keyRows; let i = index" tuiGroup class="group" [collapsed]="true">
+  <button *ngFor="let key of row" (click)="num.emit(key)" appearance="outline" size="m" tuiButton type="button">
+    {{ key }}
+  </button>
+
+  <button *ngIf="i === keyRows.length - 1" (click)="backspace.emit()" appearance="outline" size="m" tuiButton
+    type="button" icon="tuiIconDelete">
+  </button>
+</div>

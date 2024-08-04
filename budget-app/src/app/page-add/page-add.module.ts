@@ -17,6 +17,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { TuiAutoFocusModule } from '@taiga-ui/cdk';
+import { NumpadComponent } from 'src/app/common';
 import { AddComponent } from './add/add.component';
 
 const routes: Routes = [
@@ -55,6 +56,7 @@ const tuiImports = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    NumpadComponent
   ],
   providers: [
     {

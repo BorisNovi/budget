@@ -10,3 +10,5 @@ export { IAdd } from './common-models/add.model';
 export { ExpenceCategory } from './common-enums/expenceCategory.enum';
 export { IncomeCategory } from './common-enums/incomeCategory.enum';
 export { ExpenceTypeKey } from './common-enums/expenceTypeKey.enum';
+// components
+export { NumpadComponent } from './common-components/numpad/numpad.component';

@@ -80,6 +80,7 @@ export class AddComponent {
 
   public submit(category: string): void {
     this.inputForm?.get('category')?.setValue(category);
+
     const completeData = {
       ...this.inputForm.value,
       dateStr: this.inputForm.value.date
@@ -92,5 +93,19 @@ export class AddComponent {
   private resetForm(): void {
     this.inputForm?.get('amount')?.reset(null);
     this.inputForm?.get('comment')?.reset('');
+  }
+
+  public onNumpadNum(num: string | number): void {
+    const currentValue: string = this.inputForm.controls['amount'].value || '';
+    const newValue = `${currentValue}${num}`;
+
+    // TODO: сделать это в виде валидатора (Валидировать точки, если точка первая, если более двух значений после точки)
+    if (num === '.' && currentValue.includes('.')) return;
+    this.inputForm.controls['amount'].patchValue(newValue);
+  }
+
+  public onBackspace(): void {
+    const currentValue = this.inputForm.controls['amount'].value || '';
+    this.inputForm.controls['amount'].patchValue(currentValue.slice(0, -1));
   }
 }

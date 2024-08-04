@@ -5,7 +5,7 @@
       (ngSubmit)="showCategoryDialog()">
 
         <div class="main__type">
-          <span class="main__type--header tui-text_body-xl">Add amount!</span>
+          <span class="main__type--header tui-text_body-xl">Add amount</span>
           <div
             tuiGroup
             class="main__type--group"
@@ -30,22 +30,21 @@
           </div>
         </div>
         <div class="main__display">
-          <tui-input-number
+          <tui-input
             class="main__display--value"
-            decimal="not-zero"
-            inputmode="decimal"
-            [inputMode]="'decimal'"
+
             formControlName="amount"
-            [precision]="2"
             [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
             [tuiTextfieldLabelOutside]="true"
             tuiAutoFocus
             [autofocus]="true"
             >
-          </tui-input-number>
+          </tui-input>
           <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
         </div>
-        <input type="number">
+
+        <app-numpad (num)="onNumpadNum($event)" (backspace)="onBackspace()"></app-numpad>
+
         <div class="main__options">
           <button
             tuiIconButton
