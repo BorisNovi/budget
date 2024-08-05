@@ -1,5 +1,6 @@
 // Pipes
 export { ShortNumsPipe } from './common-pipes/short-nums.pipe';
+export { FloatInputPipe } from './common-pipes/float-input.pipe';
 // Services
 export { CalendarLocalService } from './common-services/calendar-local.service';
 export { CurrencyService } from './common-services/currency.service';

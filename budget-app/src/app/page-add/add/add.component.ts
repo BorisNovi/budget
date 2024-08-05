@@ -5,7 +5,8 @@ import {
 import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
 import {
-  LocalService, CurrencyService, ExpenceCategory, IncomeCategory, ExpenceTypeKey
+  LocalService, CurrencyService, ExpenceCategory, IncomeCategory, ExpenceTypeKey,
+  FloatInputPipe
 } from 'src/app/common';
 
 @Component({
@@ -42,6 +43,7 @@ export class AddComponent {
     private formBuilder: FormBuilder,
     private localService: LocalService,
     public cs: CurrencyService,
+    private floatInputPipe: FloatInputPipe
   ) {
     this.inputForm = this.formBuilder.group({
       expencesType: [ExpenceTypeKey.EXPENCE, []],
@@ -86,6 +88,9 @@ export class AddComponent {
       dateStr: this.inputForm.value.date
     };
 
+    console.log(this.inputForm.value.amount);
+    // TODO: тут строку можно превращать в цифру
+
     this.localService.set(completeData.expencesType, completeData);
     this.resetForm();
   }
@@ -95,13 +100,15 @@ export class AddComponent {
     this.inputForm?.get('comment')?.reset('');
   }
 
-  public onNumpadNum(num: string | number): void {
+  public onNumpadNum(num: string | number): void { // TODO Также нужно прехватывать ввод с клавиатуры
     const currentValue: string = this.inputForm.controls['amount'].value || '';
     const newValue = `${currentValue}${num}`;
 
-    // TODO: сделать это в виде валидатора (Валидировать точки, если точка первая, если более двух значений после точки)
-    if (num === '.' && currentValue.includes('.')) return;
-    this.inputForm.controls['amount'].patchValue(newValue);
+    if (num === '.' && currentValue.includes('.')) return; // Отсекает повторную точку
+
+    const transformedValue = this.floatInputPipe.transform(newValue, 2);
+
+    this.inputForm.controls['amount'].patchValue(transformedValue);
   }
 
   public onBackspace(): void {

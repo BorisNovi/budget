@@ -32,12 +32,9 @@
         <div class="main__display">
           <tui-input
             class="main__display--value"
-
             formControlName="amount"
             [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
             [tuiTextfieldLabelOutside]="true"
-            tuiAutoFocus
-            [autofocus]="true"
             >
           </tui-input>
           <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
