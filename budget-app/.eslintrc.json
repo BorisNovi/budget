@@ -29,6 +29,7 @@
         "@typescript-eslint/lines-between-class-members": "off",
         "@typescript-eslint/dot-notation":"off",
         "max-len": 0,
+        "no-param-reassign": "off",
         "no-plusplus":"off",
         "@angular-eslint/directive-selector": [
           "error",

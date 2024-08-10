@@ -7,7 +7,7 @@ import { NgControl } from '@angular/forms';
 })
 export class FloatInputDirective {
   @Input() floatInputValueLimit = 9999999;
-  @Input() floatInputFloatPart = 2;
+  @Input() floatInputDecimalPart = 1;
 
   constructor(private ngControl: NgControl) {}
 
@@ -63,7 +63,7 @@ export class FloatInputDirective {
     }
 
     // Ограничение знаков дробной части
-    if (input.value.split('').includes('.') && input.value.split('.')[1].length >= this.floatInputFloatPart) {
+    if (input.value.split('').includes('.') && input.value.split('.')[1].length >= this.floatInputDecimalPart) {
       event.preventDefault();
     }
   }

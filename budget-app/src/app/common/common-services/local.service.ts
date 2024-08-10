@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TuiDay } from '@taiga-ui/cdk';
-import { IAdd } from 'src/app/common';
+import { ExpenceTypeKey, IAdd } from 'src/app/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,14 @@ export class LocalService {
 
   public set(key: string, data: IAdd): void {
     const existingData: { [dateStr: string]: IAdd[] } = this.get(key);
+    const existingDataList = existingData[data.dateStr];
 
-    if (existingData[data.dateStr]) {
-      existingData[data.dateStr].push(data);
+    if (existingDataList) {
+      const currID = existingDataList[existingDataList.length - 1].id || 0;
+      data.id = currID + 1;
+      existingDataList.push(data);
     } else {
+      data.id = 0;
       existingData[data.dateStr] = [data];
     }
 
@@ -39,5 +43,13 @@ export class LocalService {
     const result: IAdd[] = filteredKeys.flatMap((item) => JSON.parse(data)[item]);
 
     return result;
+  }
+
+  public remove(key: ExpenceTypeKey, id: number, date: string): void {
+    const formattedDate = date.split('-').reverse().join('.');
+    const existingData: { [dateStr: string]: IAdd[] } = this.get(key);
+    const existingDataList = existingData[formattedDate];
+    const selectedItem = existingDataList.filter((data) => data.id === id);
+    console.log(selectedItem);
   }
 }

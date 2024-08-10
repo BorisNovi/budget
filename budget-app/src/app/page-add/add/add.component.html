@@ -36,6 +36,7 @@
             [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
             [tuiTextfieldLabelOutside]="true"
             appFloatInput
+            [floatInputDecimalPart]="2"
             >
           </tui-input>
           <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>

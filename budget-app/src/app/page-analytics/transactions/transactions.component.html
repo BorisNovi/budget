@@ -41,7 +41,7 @@
                   icon="tuiIconClose" size="xs" (click)="showDeleteTemplateIndex.next(-1)">
                 </button>
                 <button tuiIconButton class="transactions__table__td__actions__button-confirm" appearance="link"
-                  icon="tuiIconCheck" size="xs" (click)="delete(transaction)">
+                  icon="tuiIconCheck" size="xs" (click)="delete(transaction.id, transaction.dateStr)">
                 </button>
               </span>
             </ng-template>

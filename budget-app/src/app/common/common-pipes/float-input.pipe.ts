@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class FloatInputPipe implements PipeTransform {
-  transform(value: string, decimalPart = 1): string {
+  transform(value: string, prevValue: string, valueLimit = 9999999, decimalPart = 1): string {
     let newValue = String(value);
 
     // Заменяет ведущую точку, запятую или '0' на '0.'
@@ -22,6 +22,16 @@ export class FloatInputPipe implements PipeTransform {
     if (parts[1]?.length > decimalPart) {
       parts[1] = parts[1].slice(0, decimalPart);
       newValue = parts.join('.');
+    }
+
+    // Проверка на величину значения
+    if (parseFloat(newValue) > valueLimit) {
+      newValue = prevValue;
+    }
+
+    // Отсекает повторную точку
+    if (value.slice(-1) === '.' && prevValue.includes('.')) {
+      newValue = prevValue;
     }
 
     return newValue;

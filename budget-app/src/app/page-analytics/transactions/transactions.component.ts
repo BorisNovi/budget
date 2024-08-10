@@ -51,7 +51,7 @@ export class TransactionsComponent implements OnInit {
     this.showDeleteTemplateIndex.next(index);
   }
 
-  public delete(transaction: IAdd): void {
-    console.log(transaction);
+  public delete(id: number, date: string): void {
+    this.localService.remove(this.expenceTypeKey, id, date);
   }
 }

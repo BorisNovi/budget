@@ -93,8 +93,6 @@ export class AddComponent {
       dateStr: this.inputForm.value.date
     };
 
-    console.log(completeData);
-
     this.localService.set(completeData.expencesType, completeData);
     this.resetForm();
   }
@@ -104,13 +102,11 @@ export class AddComponent {
     this.inputForm?.get('comment')?.reset('');
   }
 
-  public onNumpadNum(num: string | number): void { // TODO Также нужно прехватывать ввод с клавиатуры
+  public onNumpadNum(num: string | number): void {
     const currentValue: string = this.inputForm.controls['amount'].value || '';
     const newValue = `${currentValue}${num}`;
 
-    if (num === '.' && currentValue.includes('.')) return; // Отсекает повторную точку
-
-    const transformedValue = this.floatInputPipe.transform(newValue, 2);
+    const transformedValue = this.floatInputPipe.transform(newValue, currentValue, 9999999, 2);
 
     this.inputForm.controls['amount'].setValue(transformedValue);
   }
