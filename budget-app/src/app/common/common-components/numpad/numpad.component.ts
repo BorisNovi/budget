@@ -20,8 +20,7 @@ export class NumpadComponent {
   @Output() public backspace = new EventEmitter<void>();
   public keyRows: Array<(number | string)[]> = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0]];
 
-  constructor(private vibro: VibroService) {
-  }
+  constructor(private vibro: VibroService) {}
 
   public onNum(num: string | number): void {
     this.vibro.short();

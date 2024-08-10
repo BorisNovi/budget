@@ -6,7 +6,8 @@ import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
 import {
   LocalService, CurrencyService, ExpenceCategory, IncomeCategory, ExpenceTypeKey,
-  FloatInputPipe
+  FloatInputPipe,
+  IAdd
 } from 'src/app/common';
 
 @Component({
@@ -21,6 +22,7 @@ import {
       useValue: {
         required: 'Enter amount!',
         min: ({ min }: { min: number }) => `Min value is ${min}`,
+        max: ({ max }: { max: number }) => `Max value is ${max}`,
         maxLength: ({ maxLength }: { maxLength: number }) => `Max length is ${maxLength}`
       },
     },
@@ -47,7 +49,7 @@ export class AddComponent {
   ) {
     this.inputForm = this.formBuilder.group({
       expencesType: [ExpenceTypeKey.EXPENCE, []],
-      amount: [null, [Validators.required, Validators.min(0.01)]],
+      amount: [null, [Validators.required, Validators.min(0.01), Validators.max(99999999)]],
       date: [this.today, []],
       comment: ['', [Validators.maxLength(40)]],
       category: ['', []]
@@ -81,15 +83,17 @@ export class AddComponent {
   }
 
   public submit(category: string): void {
+    if (Number.isNaN(+this.inputForm.controls['amount'].value)) return;
+
     this.inputForm?.get('category')?.setValue(category);
 
-    const completeData = {
+    const completeData: IAdd = {
       ...this.inputForm.value,
+      amount: +this.inputForm.controls['amount'].value,
       dateStr: this.inputForm.value.date
     };
 
-    console.log(this.inputForm.value.amount);
-    // TODO: тут строку можно превращать в цифру
+    console.log(completeData);
 
     this.localService.set(completeData.expencesType, completeData);
     this.resetForm();
@@ -108,11 +112,11 @@ export class AddComponent {
 
     const transformedValue = this.floatInputPipe.transform(newValue, 2);
 
-    this.inputForm.controls['amount'].patchValue(transformedValue);
+    this.inputForm.controls['amount'].setValue(transformedValue);
   }
 
   public onBackspace(): void {
-    const currentValue = this.inputForm.controls['amount'].value || '';
-    this.inputForm.controls['amount'].patchValue(currentValue.slice(0, -1));
+    const currentValue = String(this.inputForm.controls['amount'].value) || '';
+    this.inputForm.controls['amount'].setValue(currentValue.slice(0, -1));
   }
 }
