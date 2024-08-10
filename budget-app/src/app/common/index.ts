@@ -5,6 +5,7 @@ export { FloatInputPipe } from './common-pipes/float-input.pipe';
 export { CalendarLocalService } from './common-services/calendar-local.service';
 export { CurrencyService } from './common-services/currency.service';
 export { LocalService } from './common-services/local.service';
+export { VibroService } from './common-services/vibro.service';
 // Interfaces
 export { IAdd } from './common-models/add.model';
 // Enums
