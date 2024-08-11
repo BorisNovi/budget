@@ -10,9 +10,10 @@ export { LocalService } from './common-services/local.service';
 export { VibroService } from './common-services/vibro.service';
 // Interfaces
 export { IAdd } from './common-models/add.model';
+export { ILanguageOption } from './common-models/language-option.interface';
 // Enums
 export { ExpenceCategory } from './common-enums/expenceCategory.enum';
 export { IncomeCategory } from './common-enums/incomeCategory.enum';
 export { ExpenceTypeKey } from './common-enums/expenceTypeKey.enum';
-// components
+// Components
 export { NumpadComponent } from './common-components/numpad/numpad.component';

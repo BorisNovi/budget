@@ -1,0 +1,10 @@
+{
+  "TEST": "test ok",
+  "COMMON": {
+    "EXPENCE": "Expence",
+    "INCOME": "Income"
+  },
+  "ADD_PAGE": {
+    "ADD_AMOUNT": "Add amount"
+  }
+}

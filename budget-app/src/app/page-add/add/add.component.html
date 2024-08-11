@@ -5,7 +5,7 @@
       (ngSubmit)="showCategoryDialog()">
 
         <div class="main__type">
-          <span class="main__type__header tui-text_body-xl">Add amount</span>
+          <span class="main__type__header tui-text_body-xl">{{'ADD_PAGE.ADD_AMOUNT' | translate}}</span>
           <div
             tuiGroup
             class="main__type__group"
@@ -17,7 +17,7 @@
               size="m"
               [hideRadio]="true"
               >
-              Expence
+              {{"COMMON.EXPENCE" | translate}}
             </tui-radio-block>
             <tui-radio-block
               formControlName="expencesType"
@@ -25,7 +25,7 @@
               size="m"
               [hideRadio]="true"
               >
-              Income
+              {{"COMMON.INCOME" | translate}}
             </tui-radio-block>
           </div>
         </div>

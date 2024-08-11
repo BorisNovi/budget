@@ -1,0 +1,10 @@
+{
+  "TEST": "Тест ок",
+  "COMMON": {
+    "EXPENCE": "Трата",
+    "INCOME": "Доход"
+  },
+  "ADD_PAGE": {
+    "ADD_AMOUNT": "Добавить сумму"
+  }
+}
