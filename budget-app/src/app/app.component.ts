@@ -2,17 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
-  inject,
   ViewEncapsulation,
   OnInit
 } from '@angular/core';
 
 import { TuiThemeNightService } from '@taiga-ui/addon-doc/services';
 import { TuiBrightness } from '@taiga-ui/core';
-
-import { TranslateService } from '@ngx-translate/core';
-import { forkJoin } from 'rxjs';
-import { ILanguageOption, LanguageSelectService } from './common';
+import { LanguageSelectService } from './common';
 
 @Component({
   selector: 'app-root',
@@ -24,10 +20,6 @@ import { ILanguageOption, LanguageSelectService } from './common';
 export class AppComponent implements OnInit {
   title = 'budget';
   readonly night$ = this.night;
-
-  // private readonly availableLanguages = ['en', 'ru', 'ua'];
-  // private readonly translateService = inject(TranslateService);
-  // public languageOptions: ILanguageOption[] = [];
 
   constructor(
     @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
