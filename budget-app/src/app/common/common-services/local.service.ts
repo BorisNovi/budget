@@ -48,8 +48,20 @@ export class LocalService {
   public remove(key: ExpenceTypeKey, id: number, date: string): void {
     const formattedDate = date.split('-').reverse().join('.');
     const existingData: { [dateStr: string]: IAdd[] } = this.get(key);
-    const existingDataList = existingData[formattedDate];
-    const selectedItem = existingDataList.filter((data) => data.id === id);
-    console.log(selectedItem);
+
+    if (!existingData || !existingData[formattedDate]) {
+      return;
+    }
+
+    const existingDataSelectedDateList = existingData[formattedDate];
+    const existingDataCleared = existingDataSelectedDateList.filter((data) => data.id !== id);
+
+    if (existingDataCleared.length === 0) {
+      delete existingData[formattedDate];
+    } else {
+      existingData[formattedDate] = existingDataCleared;
+    }
+
+    window.localStorage.setItem(key, JSON.stringify(existingData));
   }
 }

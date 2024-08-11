@@ -9,12 +9,14 @@
     <table tuiTable size="s" class="transactions__table">
       <tbody tuiTbody>
         <tr class="">
+          <th tuiTh class="transactions__table__th">Id</th>
           <th tuiTh class="transactions__table__th">Date</th>
           <th tuiTh class="transactions__table__th">Info</th>
           <th tuiTh class="transactions__table__th">Amount</th>
           <th tuiTh class="transactions__table__th">Actions</th>
         </tr>
         <tr class="" *ngFor="let transaction of transactionList; let i = index">
+          <td tuiTd class="transactions__table__td">{{transaction.id}}</td>
           <td tuiTd class="transactions__table__td">{{transaction.date + '' | date: 'dd.MM.YY'}}</td>
           <td tuiTd class="transactions__table__td">
             <div class="transactions__table__td__info">
@@ -28,20 +30,20 @@
             <span tuiStatus class="transactions__table__td__actions"
               *ngIf="(showDeleteTemplateIndex | async) !== i; else isDelete">
               <button tuiIconButton class="transactions__table__td__actions__button-delete" appearance="link"
-                icon="tuiIconTrash2" size="xs" (click)="wannaDelete(i)">
+                icon="tuiIconTrash2" size="s" (click)="wannaDelete(i)">
               </button>
               <button tuiIconButton class="transactions__table__td__actions__button-edit" appearance="link"
-                icon="tuiIconEdit2" size="xs" [disabled]="true">
+                icon="tuiIconEdit2" size="s" [disabled]="true">
               </button>
             </span>
 
             <ng-template #isDelete>
               <span tuiStatus class="transactions__table__td__actions">
                 <button tuiIconButton class="transactions__table__td__actions__button-cancel" appearance="link"
-                  icon="tuiIconClose" size="xs" (click)="showDeleteTemplateIndex.next(-1)">
+                  icon="tuiIconClose" size="s" (click)="showDeleteTemplateIndex.next(-1)">
                 </button>
                 <button tuiIconButton class="transactions__table__td__actions__button-confirm" appearance="link"
-                  icon="tuiIconCheck" size="xs" (click)="delete(transaction.id, transaction.dateStr)">
+                  icon="tuiIconCheck" size="s" (click)="delete(transaction.id, transaction.dateStr)">
                 </button>
               </span>
             </ng-template>

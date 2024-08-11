@@ -43,4 +43,12 @@
       background-color: #0ff5;
     }
   }
+
+  &_negative {
+    color: var(--tui-support-06);
+  }
+
+  &_positive {
+    color: var(--tui-support-04);
+  }
 }

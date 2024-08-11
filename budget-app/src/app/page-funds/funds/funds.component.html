@@ -2,16 +2,16 @@
   <h2>Funds</h2>
 
   <div class="funds__sum">
-    <h2 class="funds__sum__number">{{fundsSum}} {{cs.currencyCode | tuiCurrency}}</h2>
+    <h2 class="funds__sum__number" [ngClass]="{ 'funds_positive': fundsSum > 0, 'funds_negative': fundsSum < 0 }" >{{fundsSum}} {{cs.currencyCode | tuiCurrency}}</h2>
     <span class="funds__sum__description">Common balance</span>
   </div>
   <tui-island class="funds__items">
     <div class="funds__item" *ngFor="let fund of funds">
       <div class="funds__item__data">
         <h4 class="funds__item__data__header">{{ fund.name }}</h4>
-        <span class="funds__item__data__sum">{{ fund.sum }} {{cs.currencyCode | tuiCurrency}}</span>
+        <span class="funds__item__data__sum" [ngClass]="{ 'funds_positive': fundsSum > 0, 'funds_negative': fundsSum < 0 }">{{ fund.sum }} {{cs.currencyCode | tuiCurrency}}</span>
       </div>
-      <div class="funds__item__options">opt btn</div>
+      <div class="funds__item__options"></div>
     </div>
   </tui-island>
 </div>

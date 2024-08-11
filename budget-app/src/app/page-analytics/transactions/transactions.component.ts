@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy, Component, DestroyRef, OnInit
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import {
   IAdd, CalendarLocalService, LocalService, ExpenceTypeKey,
@@ -22,7 +22,6 @@ export class TransactionsComponent implements OnInit {
   public isDeleteAllowed = false;
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private destroyRef: DestroyRef,
     private localService: LocalService,
     public calendarLocalService: CalendarLocalService,
@@ -30,20 +29,20 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const { savedRange } = this.calendarLocalService;
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((params) => {
-        console.log(params);
-
         if (params['expenceTypeKey']) {
           this.expenceTypeKey = params['expenceTypeKey'];
         }
       });
-    // TODO: В будущем перенести запрос в резолвер, или прокидывать данные через роут
-    this.transactionList = this.localService.getRangeSortedList(this.expenceTypeKey, savedRange.from, savedRange.to);
 
-    console.log(savedRange);
+    this.updateTransactionsList();
+  }
+
+  private updateTransactionsList(): void {
+    const { savedRange } = this.calendarLocalService;
+    this.transactionList = this.localService.getRangeSortedList(this.expenceTypeKey, savedRange.from, savedRange.to);
     console.log(this.transactionList);
   }
 
@@ -53,5 +52,6 @@ export class TransactionsComponent implements OnInit {
 
   public delete(id: number, date: string): void {
     this.localService.remove(this.expenceTypeKey, id, date);
+    this.updateTransactionsList();
   }
 }
