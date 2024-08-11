@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TuiThemeNightService } from '@taiga-ui/addon-doc';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TuiCurrency } from '@taiga-ui/addon-commerce';
-import { CurrencyService, ExpenceTypeKey} from 'src/app/common';
+import { CurrencyService, ExpenceTypeKey, LanguageSelectService} from 'src/app/common';
 
 @Component({
   selector: 'app-settings',
@@ -26,7 +26,8 @@ export class SettingsComponent {
   constructor(
     @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
     private cs: CurrencyService,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    public languageSelect: LanguageSelectService
   ) {
     this.setFlag();
     this.currencyForm.controls.currencyType.valueChanges

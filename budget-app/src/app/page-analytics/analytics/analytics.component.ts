@@ -16,6 +16,7 @@ export class AnalyticsComponent {
   // Dates
   private currentMonthRange = this.calendarLocalService.currentMonthRange;
   // TODO: добавить использование сервиса сохранения выбранного дипапзона календаря CalendarLocalService
+  // TODO: Заменить календарь на мобильный https://taiga-ui.dev/components/mobile-calendar
 
   // Other
   public dataForAnalytics = this.localService.getRangeSortedList(ExpenceTypeKey.EXPENCE, this.currentMonthRange.from, this.currentMonthRange.to);

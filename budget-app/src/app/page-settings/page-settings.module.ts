@@ -6,6 +6,7 @@ import {
 } from '@taiga-ui/core';
 import { TuiDataListWrapperModule, TuiIslandModule, TuiSelectModule } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes = [
@@ -25,6 +26,7 @@ const routes = [
     TuiFlagPipeModule,
     TuiDataListWrapperModule,
     TuiTextfieldControllerModule,
+    TranslateModule,
     RouterModule.forChild(routes),
   ]
 })

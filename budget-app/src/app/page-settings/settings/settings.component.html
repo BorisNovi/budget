@@ -35,6 +35,13 @@
         class="settings__params__item__button" (click)="showDeleteDialog()">
       </button>
     </tui-island>
+
+    <tui-island class="settings__params__item" style="display: none;">
+      <span class="settings__params__item__text">
+        Language
+      </span>
+      <button (click)="languageSelect.changeLanguage(i)" *ngFor="let i of languageSelect.languageOptions">{{ i.label | translate }}</button>
+    </tui-island>
   </div>
 </div>
 
