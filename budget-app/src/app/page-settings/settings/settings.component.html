@@ -2,9 +2,11 @@
   <h2>Settings</h2>
 
   <div class="settings__params">
+
+    <!-- Theme -->
     <tui-island class="settings__params__item">
       <span class="settings__params__item__text">
-        Teheme
+        Theme
       </span>
       <button appearance="secondary-destructive" tuiIconButton
         [icon]="night.storage['tuiNight'] === 'true' ? 'tuiIconSunLarge' : 'tuiIconMoonLarge'" type="button"
@@ -12,21 +14,62 @@
       </button>
     </tui-island>
 
+
+    <!-- Currency -->
     <tui-island class="settings__params__item">
       <span class="settings__params__item__text">
         Currency
       </span>
-      <form [formGroup]="currencyForm" class="settings__params__item__form-currency">
+      <form [formGroup]="settingsForm" class="settings__params__item__form-currency">
         <tui-select formControlName="currencyType" [tuiTextfieldLabelOutside]="true" [tuiTextfieldCustomContent]="flag">
-          <tui-data-list-wrapper *tuiDataList [items]="currencyTypes"></tui-data-list-wrapper>
+          <tui-data-list-wrapper *tuiDataList [items]="currencyCodes"
+            [itemContent]="currencyContent"></tui-data-list-wrapper>
         </tui-select>
       </form>
       <ng-template #flag>
-        <img class="settings__params__item__form-currency__flag" [alt]="currencyForm.controls.currencyType.value"
-          [src]="countryFlag === 'EU' ? 'assets/images/EU-flag.png' : countryFlag | tuiFlag" />
+        <img class="settings__params__item__form-currency__flag" [alt]="settingsForm.controls.currencyType.value"
+          [src]="settingsForm.controls.currencyType.value?.slice(0, 2) === 'EU' ? 'assets/images/EU-flag.png' : settingsForm.controls.currencyType.value?.slice(0, 2) | tuiFlag" />
       </ng-template>
     </tui-island>
 
+    <ng-template #currencyContent let-currencyCode>
+      <div class="settings__params__item__form-currency__content">
+        <span>{{ currencyCode }}</span>
+        <img class="settings__params__item__form-currency__content__flag"
+          [alt]="settingsForm.controls.currencyType.value"
+          [src]="currencyCode.slice(0, 2) === 'EU' ? 'assets/images/EU-flag.png' : currencyCode.slice(0, 2) | tuiFlag" />
+      </div>
+    </ng-template>
+
+
+    <!-- Language -->
+    <tui-island class="settings__params__item">
+      <span class="settings__params__item__text">
+        Language
+      </span>
+      <form [formGroup]="settingsForm" class="settings__params__item__form-language">
+        <tui-select formControlName="language" [tuiTextfieldLabelOutside]="true"
+          [valueContent]="settingsForm.controls.language.value?.label" [tuiTextfieldCustomContent]="langFlag">
+          <tui-data-list-wrapper *tuiDataList [items]="languageSelect.languageOptions$ | async"
+            [itemContent]="languageContent"></tui-data-list-wrapper>
+        </tui-select>
+      </form>
+      <ng-template #langFlag>
+        <img class="settings__params__item__form-language__flag" [alt]="settingsForm.controls.language.value?.label"
+          [src]="null === 'EU' ? 'assets/images/EU-flag.png' : settingsForm.controls.language.value?.value | uppercase | tuiFlag" />
+      </ng-template>
+    </tui-island>
+
+    <ng-template #languageContent let-langOption>
+      <div class="settings__params__item__form-language__content">
+        <span>{{ langOption.label }}</span>
+        <img class="settings__params__item__form-language__content__flag"
+          [alt]="settingsForm.controls.currencyType.value" [src]="langOption.value | uppercase | tuiFlag" />
+      </div>
+    </ng-template>
+
+
+    <!-- Delete -->
     <tui-island class="settings__params__item">
       <span class="settings__params__item__text">
         Delete data
@@ -36,24 +79,17 @@
       </button>
     </tui-island>
 
-    <tui-island class="settings__params__item" style="display: none;">
-      <span class="settings__params__item__text">
-        Language
-      </span>
-      <button (click)="languageSelect.changeLanguage(i)" *ngFor="let i of languageSelect.languageOptions">{{ i.label | translate }}</button>
-    </tui-island>
+    <ng-template let-observer [tuiDialogOptions]="{label: 'You can\'t recover it!', size: 'm',}"
+      [(tuiDialog)]="deleteDialogOpen">
+      <div class="settings-dialog__wrapper">
+        <button tuiButton type="button" appearance="accent" (click)="deleteData()" class="settings-dialog__button">
+          <span>Delete</span>
+        </button>
+        <button tuiButton type="button" appearance="outline" (click)="observer.complete()"
+          class="settings-dialog__button">
+          <span>Cancel</span>
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>
-
-
-<ng-template let-observer [tuiDialogOptions]="{label: 'You can\'t recover it!', size: 'm',}"
-  [(tuiDialog)]="deleteDialogOpen">
-  <div class="settings-dialog__wrapper">
-    <button tuiButton type="button" appearance="accent" (click)="deleteData()" class="settings-dialog__button">
-      <span>Delete</span>
-    </button>
-    <button tuiButton type="button" appearance="outline" (click)="observer.complete()" class="settings-dialog__button">
-      <span>Cancel</span>
-    </button>
-  </div>
-</ng-template>

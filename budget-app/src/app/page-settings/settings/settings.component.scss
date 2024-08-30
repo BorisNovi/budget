@@ -20,12 +20,27 @@
         font-size: 1.2em;
       }
 
-      &__form-currency {
+      &__form-currency,
+      &__form-language {
         width: 60%;
 
         &__flag {
           width: 50%;
           border-radius: 2px;
+        }
+
+        &__content{
+          display: flex;
+          justify-content: space-between;
+          padding: 0 12px 0;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: nowrap;
+
+          &__flag {
+            width: 28px;
+            height: 20px;
+          }
         }
       }
     }
