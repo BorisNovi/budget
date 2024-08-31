@@ -43,7 +43,6 @@ export class TransactionsComponent implements OnInit {
   private updateTransactionsList(): void {
     const { savedRange } = this.calendarLocalService;
     this.transactionList = this.localService.getRangeSortedList(this.expenceTypeKey, savedRange.from, savedRange.to);
-    console.log(this.transactionList);
   }
 
   public wannaDelete(index: number): void {

@@ -3,6 +3,7 @@ export { ShortNumsPipe } from './common-pipes/short-nums.pipe';
 export { FloatInputPipe } from './common-pipes/float-input.pipe';
 // Directives
 export { FloatInputDirective } from './common-directives/float-input.directive';
+export { VibrateOnClickDirective } from './common-directives/button-vibration.directive';
 // Services
 export { CalendarLocalService } from './common-services/calendar-local.service';
 export { CurrencyService } from './common-services/currency.service';

@@ -64,6 +64,7 @@
             [showLoader]="false"
             icon="tuiIconCornerDownLeftLarge"
             [disabled]="!inputForm.valid"
+            appVibrateOnClick
           >
           </button>
 
@@ -109,6 +110,7 @@
         appearance="flat"
         type="submit"
         icon="tuiIconCheckLarge"
+        appVibrateOnClick
         >
       </button>
     </p>
@@ -142,6 +144,7 @@
         appearance="flat"
         type="submit"
         icon="tuiIconCheckLarge"
+        appVibrateOnClick
         >
       </button>
     </p>
@@ -163,6 +166,7 @@
         type="submit"
         appearance="destructive"
         (click)="submit(category)"
+        appVibrateOnClick
         class="categories-dialog__button">
           <span>{{ 'CATEGORY.' + category | translate }}</span>
         </button>

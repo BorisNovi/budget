@@ -17,7 +17,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { TuiAutoFocusModule } from '@taiga-ui/cdk';
-import { FloatInputPipe, FloatInputDirective, NumpadComponent } from 'src/app/common';
+import { FloatInputPipe, FloatInputDirective, NumpadComponent, VibrateOnClickDirective } from 'src/app/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { AddComponent } from './add/add.component';
 
@@ -59,7 +59,8 @@ const tuiImports = [
     ReactiveFormsModule,
     TranslateModule,
     NumpadComponent,
-    FloatInputDirective
+    FloatInputDirective,
+    VibrateOnClickDirective
   ],
   providers: [
     {
