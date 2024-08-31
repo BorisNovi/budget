@@ -2,9 +2,24 @@
   "TEST": "Тест ок",
   "COMMON": {
     "EXPENCE": "Витрата",
-    "INCOME": "Дохід"
+    "INCOME": "Дохід",
+    "CATEGORY": "Категорiя"
+  },
+  "CATEGORY": {
+    "food": "Продукти",
+    "restaurant": "Ресторани",
+    "transport": "Транспорт",
+    "rent": "Оренда",
+    "home": "Дiм",
+    "entertainment": "Розваги",
+    "electronics": "Електроніка",
+    "soft": "Софт",
+    "medical": "Медицина",
+    "clothes": "Одяг",
+    "else": "Інше"
   },
   "ADD_PAGE": {
-    "ADD_AMOUNT": "Додати суму"
+    "ADD_AMOUNT": "Додати суму",
+    "COMMENT": "Щось..."
   }
 }

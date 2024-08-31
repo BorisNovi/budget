@@ -6,7 +6,8 @@ import { TuiThemeNightService } from '@taiga-ui/addon-doc';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TuiCurrency } from '@taiga-ui/addon-commerce';
 import {
-  CurrencyService, ExpenceTypeKey, ILanguageOption, LanguageSelectService
+  CurrencyService, ILanguageOption, LanguageSelectService,
+  LocalService
 } from 'src/app/common';
 
 @Component({
@@ -27,6 +28,7 @@ export class SettingsComponent {
   constructor(
     @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
     private cs: CurrencyService,
+    private ls: LocalService,
     private destroyRef: DestroyRef,
     public languageSelect: LanguageSelectService
   ) {
@@ -56,8 +58,7 @@ export class SettingsComponent {
   }
 
   public deleteData(): void {
-    localStorage.removeItem(ExpenceTypeKey.EXPENCE);
-    localStorage.removeItem(ExpenceTypeKey.INCOME);
+    this.ls.clearAll();
 
     this.deleteDialogOpen = false;
   }

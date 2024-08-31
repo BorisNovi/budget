@@ -2,9 +2,24 @@
   "TEST": "Тест ок",
   "COMMON": {
     "EXPENCE": "Трата",
-    "INCOME": "Доход"
+    "INCOME": "Доход",
+    "CATEGORY": "Категория"
+  },
+  "CATEGORY": {
+    "food": "Продукты",
+    "restaurant": "Рестораны",
+    "transport": "Транспорт",
+    "rent": "Аренда",
+    "home": "Дом",
+    "entertainment": "Развлечения",
+    "electronics": "Электроника",
+    "soft": "Софт",
+    "medical": "Медицина",
+    "clothes": "Одежда",
+    "else": "Другое"
   },
   "ADD_PAGE": {
-    "ADD_AMOUNT": "Добавить сумму"
+    "ADD_AMOUNT": "Добавить сумму",
+    "COMMENT": "Что-то..."
   }
 }

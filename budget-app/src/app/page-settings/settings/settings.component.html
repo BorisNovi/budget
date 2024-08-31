@@ -56,7 +56,7 @@
       </form>
       <ng-template #langFlag>
         <img class="settings__params__item__form-language__flag" [alt]="settingsForm.controls.language.value?.label"
-          [src]="null === 'EU' ? 'assets/images/EU-flag.png' : settingsForm.controls.language.value?.value | uppercase | tuiFlag" />
+          [src]="settingsForm.controls.language.value?.value === 'en' ? ('GB' | tuiFlag) : settingsForm.controls.language.value?.value | uppercase | tuiFlag" />
       </ng-template>
     </tui-island>
 

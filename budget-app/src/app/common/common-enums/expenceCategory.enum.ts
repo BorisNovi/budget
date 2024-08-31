@@ -5,6 +5,7 @@ export enum ExpenceCategory {
   RENT = 'rent',
   HOME = 'home',
   ENTERTAINMENT = 'entertainment',
+  ELECTRONICS = 'electronics',
   SOFT = 'soft',
   MEDICAL = 'medical',
   CLOTHES = 'clothes',

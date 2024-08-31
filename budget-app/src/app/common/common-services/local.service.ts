@@ -64,4 +64,9 @@ export class LocalService {
 
     window.localStorage.setItem(key, JSON.stringify(existingData));
   }
+
+  public clearAll(): void {
+    window.localStorage.removeItem(ExpenceTypeKey.EXPENCE);
+    window.localStorage.removeItem(ExpenceTypeKey.INCOME);
+  }
 }

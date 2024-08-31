@@ -1,0 +1,25 @@
+{
+  "TEST": "test ok",
+  "COMMON": {
+    "EXPENCE": "Expence",
+    "INCOME": "Income",
+    "CATEGORY": "Category"
+  },
+  "CATEGORY": {
+    "food": "food",
+    "restaurant": "restaurant",
+    "transport": "transport",
+    "rent": "rent",
+    "home": "home",
+    "entertainment": "entertainment",
+    "electronics": "electronics",
+    "soft": "soft",
+    "medical": "medical",
+    "clothes": "clothes",
+    "else": "else"
+  },
+  "ADD_PAGE": {
+    "ADD_AMOUNT": "Add amount",
+    "COMMENT": "Smth..."
+  }
+}

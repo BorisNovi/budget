@@ -1,12 +1,14 @@
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, forkJoin } from 'rxjs';
+import {
+  BehaviorSubject, forkJoin
+} from 'rxjs';
 import { ILanguageOption } from '../common-models/language-option.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageSelectService {
   private readonly translateService = inject(TranslateService);
-  private readonly availableLanguages = ['gb', 'ru', 'ua'];
+  private readonly availableLanguages = ['en', 'ru', 'ua'];
   private readonly currentLangValue = this.availableLanguages[0];
 
   private readonly languageOptionsSubject = new BehaviorSubject<ILanguageOption[]>([]);
@@ -17,8 +19,9 @@ export class LanguageSelectService {
 
   constructor() {
     this.translateService.addLangs(this.availableLanguages);
-    this.currentLangValue = localStorage.getItem('bugget-app-language') || this.translateService.getBrowserLang() || this.translateService.defaultLang;
+    this.currentLangValue = window.localStorage.getItem('bugget-app-language') || this.translateService.getBrowserLang() || this.translateService.defaultLang;
     this.translateService.setDefaultLang(this.currentLangValue);
+    this.translateService.use(this.translateService.defaultLang);
   }
 
   public buildLanguageOptions() {
@@ -52,7 +55,7 @@ export class LanguageSelectService {
   }
 
   public changeLanguage(language: ILanguageOption) {
-    localStorage.setItem('bugget-app-language', language.value);
+    window.localStorage.setItem('bugget-app-language', language.value);
     this.translateService.use(language.value);
   }
 }

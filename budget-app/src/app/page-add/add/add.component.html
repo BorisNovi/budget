@@ -126,7 +126,7 @@
     <tui-input
       [tuiTextfieldLabelOutside]="true"
       formControlName="comment">
-      <input placeholder="For smth..." tuiTextfield />
+      <input [placeholder]="'ADD_PAGE.COMMENT' | translate" tuiTextfield />
     </tui-input>
     <tui-error formControlName="comment" [error]="[] | tuiFieldError | async"></tui-error>
     <p
@@ -150,7 +150,7 @@
 
 <ng-template
   let-observer
-  [tuiDialogOptions]="{label: 'Category', size: 'm'}"
+  [tuiDialogOptions]="{label: 'COMMON.CATEGORY' | translate, size: 'm'}"
   [(tuiDialog)]="categoryDialogOpen">
   <form
     [formGroup]="inputForm"
@@ -164,7 +164,7 @@
         appearance="destructive"
         (click)="submit(category)"
         class="categories-dialog__button">
-          <span>{{ category }}</span>
+          <span>{{ 'CATEGORY.' + category | translate }}</span>
         </button>
       </div>
     </div>
