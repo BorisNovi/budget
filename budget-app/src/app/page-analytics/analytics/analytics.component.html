@@ -9,24 +9,21 @@
     tuiButton
     size="m"
     type="button"
-    [tuiDropdown]="dropdownContent"
-    [tuiDropdownManual]="open"
-    (click)="onDateSelectClick()"
-    (tuiActiveZoneChange)="onDateActiveZone($event)"
-    (tuiObscured)="onDateObscured($event)"
-    tuiDropdownAlign="center"
-    [tuiDropdownLimitWidth]="'fixed'"
-    [tuiDropdownOffset]="10"
-    [tuiDropdownMaxHeight]="500">
+    (click)="dateDialogOpen = true">
      {{ calendarValue.to !== calendarValue.from ? calendarValue.from + '-' + calendarValue.to : calendarValue.from }}
-      <ng-template #dropdownContent>
-        <tui-calendar-range
-          (valueChange)="onRangeChange($event)"
-          [value]="calendarValue"
-          [items]="items">
-        </tui-calendar-range>
-      </ng-template>
     </button>
+
+    <!-- dialog -->
+    <ng-template let-observer [tuiDialogOptions]="{label: 'Select Date', size: 'auto'}" [(tuiDialog)]="dateDialogOpen">
+      <div class="analytics__calendar-dialog">
+        <tui-calendar [maxViewedMonth]="firstMonth" [month]="firstMonth" [(hoveredItem)]="hoveredItem" [showAdjacent]="true"
+        [value]="calendarValue" (dayClick)="onDayClick($event)" />
+        <p class="analytics__calendar-dialog__buttons">
+          <button tuiIconButton  appearance="flat" type="submit" icon="tuiIconCornerUpLeftLarge" (click)="dateDialogOpen = false">
+          </button>
+        </p>
+      </div>
+    </ng-template>
 
     <div tuiGroup class="analytics__buttons__group" [adaptive]="false" [collapsed]="true">
       <tui-radio-block [item]="expenceItem" size="s" [formControl]="expenceForm" [hideRadio]="true">

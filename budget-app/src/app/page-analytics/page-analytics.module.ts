@@ -7,7 +7,9 @@ import {
 } from '@taiga-ui/addon-charts';
 import { TuiCurrencyPipeModule, TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { TuiActiveZoneModule, TuiHoveredModule, TuiObscuredModule } from '@taiga-ui/cdk';
-import { TuiButtonModule, TuiDropdownModule, TuiGroupModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule, TuiCalendarModule, TuiDialogModule, TuiDropdownModule, TuiGroupModule
+} from '@taiga-ui/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TuiTableModule } from '@taiga-ui/addon-table';
 import { AnalyticsComponent } from './analytics/analytics.component';
@@ -37,7 +39,9 @@ const tuiImports = [
   TuiAxesModule,
   TuiLineDaysChartModule,
   TuiCurrencyPipeModule,
-  TuiTableModule
+  TuiTableModule,
+  TuiDialogModule,
+  TuiCalendarModule
 ];
 @NgModule({
   declarations: [

@@ -19,6 +19,18 @@
     padding-bottom: 45px;
   }
 
+  &__calendar-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__buttons {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
   &__buttons {
     display: flex;
     flex-direction: column;

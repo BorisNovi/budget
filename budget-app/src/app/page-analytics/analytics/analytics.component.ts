@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   LocalService, CalendarLocalService, ExpenceCategory, IncomeCategory, ExpenceTypeKey
 } from 'src/app/common';
-import { TuiDayRange, tuiSum } from '@taiga-ui/cdk';
-import { tuiCreateDefaultDayRangePeriods } from '@taiga-ui/kit';
+import { TuiDay, TuiDayRange, TuiMonth, tuiSum } from '@taiga-ui/cdk';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -15,8 +14,21 @@ import { FormControl } from '@angular/forms';
 export class AnalyticsComponent {
   // Dates
   private currentMonthRange = this.calendarLocalService.currentMonthRange;
-  // TODO: добавить использование сервиса сохранения выбранного дипапзона календаря CalendarLocalService
-  // TODO: Заменить календарь на мобильный https://taiga-ui.dev/components/mobile-calendar
+
+  public calendarValue = this.calendarLocalService.savedRange || this.calendarLocalService.currentMonthRange;
+  public dateDialogOpen = false;
+
+  protected firstMonth = TuiMonth.currentLocal();
+  protected hoveredItem: TuiDay | null = null;
+
+  protected onDayClick(day: TuiDay): void {
+    if (!this.calendarValue?.isSingleDay) {
+      this.calendarValue = new TuiDayRange(day, day);
+    }
+
+    this.calendarValue = TuiDayRange.sort(this.calendarValue.from, day);
+    this.calendarLocalService.saveRange(this.calendarValue);
+  }
 
   // Other
   public dataForAnalytics = this.localService.getRangeSortedList(ExpenceTypeKey.EXPENCE, this.currentMonthRange.from, this.currentMonthRange.to);
@@ -28,35 +40,6 @@ export class AnalyticsComponent {
     this.expenceForm.valueChanges.subscribe((val) => {
       this.getData(val);
     });
-  }
-
-  // Dropdown
-  public open = false;
-
-  public onDateSelectClick(): void {
-    this.open = !this.open;
-  }
-
-  public onDateObscured(obscured: boolean): void {
-    if (obscured) {
-      this.open = false;
-    }
-  }
-
-  public onDateActiveZone(active: boolean): void {
-    this.open = active && this.open;
-  }
-
-  // Calendar
-  public items = tuiCreateDefaultDayRangePeriods().filter(((item) => item['name'] !== 'For all the time'));
-
-  public calendarValue = this.currentMonthRange;
-
-  public onRangeChange(value: TuiDayRange | null) {
-    this.calendarValue = value || this.currentMonthRange;
-
-    this.calendarLocalService.saveRange(this.calendarValue);
-    this.getData(this.expenceForm.value);
   }
 
   // Analytics

@@ -62,9 +62,9 @@
 
     <ng-template #languageContent let-langOption>
       <div class="settings__params__item__form-language__content">
-        <span>{{ langOption.label }}</span>
+        <span>{{ langOption.label }}{{ langOption.value === 'en' }}</span>
         <img class="settings__params__item__form-language__content__flag"
-          [alt]="settingsForm.controls.currencyType.value" [src]="langOption.value | uppercase | tuiFlag" />
+          [alt]="settingsForm.controls.currencyType.value" [src]="langOption.value === 'en' ? ('GB' | tuiFlag) : langOption.value | uppercase | tuiFlag" />
       </div>
     </ng-template>
 
