@@ -1,9 +1,5 @@
-
 <tui-island class="analytics__items__chart-1">
-  <tui-ring-chart
-    class="analytics__items__chart-1__ring"
-    [value]="sumsOfExpences"
-    [(activeItemIndex)]="activeItemIndex">
+  <tui-ring-chart class="analytics__items__chart-1__ring" [value]="sumsOfExpences" [(activeItemIndex)]="activeItemIndex">
     <div>{{ total | short_nums }} {{ cs.currencyCode | tuiCurrency }}</div>
     <div>Total</div>
   </tui-ring-chart>

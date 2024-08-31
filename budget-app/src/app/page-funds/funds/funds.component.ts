@@ -8,15 +8,16 @@ import { IFund } from '../models/funds.model';
 @Component({
   selector: 'app-funds',
   templateUrl: './funds.component.html',
-  styleUrls: ['./funds.component.scss']
+  styleUrls: ['./funds.component.scss'],
 })
 export class FundsComponent {
   public fundsSum = 0;
-  public funds: IFund[] = [
-    { id: 1, sum: 0, name: 'Main vallet' },
-  ];
+  public funds: IFund[] = [{ id: 1, sum: 0, name: 'Main vallet' }];
 
-  constructor(public cs: CurrencyService, public localService: LocalService) {
+  constructor(
+    public cs: CurrencyService,
+    public localService: LocalService
+  ) {
     const startDate = new TuiDay(2000, 0, 1);
     const expences = this.localService.getRangeSortedList(ExpenceTypeKey.EXPENCE, startDate);
     const incomes = this.localService.getRangeSortedList(ExpenceTypeKey.INCOME, startDate);

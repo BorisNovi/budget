@@ -1,4 +1,4 @@
 export enum ExpenceTypeKey {
   EXPENCE = 'expence',
-  INCOME = 'income'
+  INCOME = 'income',
 }

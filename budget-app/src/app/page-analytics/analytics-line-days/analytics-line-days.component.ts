@@ -1,13 +1,8 @@
 import {
-  AfterContentInit, Component, Inject, Input,
+  AfterContentInit, Component, Inject, Input
 } from '@angular/core';
 import {
-  TUI_IS_E2E,
-  TuiDay,
-  TuiDayRange,
-  TuiMonth,
-  tuiPure,
-  TuiStringHandler,
+  TUI_IS_E2E, TuiDay, TuiDayRange, TuiMonth, tuiPure, TuiStringHandler
 } from '@taiga-ui/cdk';
 import { TUI_MONTHS } from '@taiga-ui/core';
 import { Observable } from 'rxjs';
@@ -27,14 +22,14 @@ export class AnalyticsLineDaysComponent implements AfterContentInit {
 
   readonly xStringify$: Observable<TuiStringHandler<TuiDay>> = this.months$.pipe(
     map(
-      (months) => ({ month, day }) => `${months[month]}, ${day}`,
-    ),
+      (months) => ({ month, day }) => `${months[month]}, ${day}`
+    )
   );
 
   constructor(
     public cs: CurrencyService,
     @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
-    @Inject(TUI_IS_E2E) readonly isE2E: boolean,
+    @Inject(TUI_IS_E2E) readonly isE2E: boolean
   ) {}
 
   public ngAfterContentInit(): void {
@@ -48,14 +43,11 @@ export class AnalyticsLineDaysComponent implements AfterContentInit {
   @tuiPure
   computeLabels$({ from, to }: TuiDayRange): Observable<readonly string[]> {
     return this.months$.pipe(
-      map((months) => Array.from(
-        { length: TuiMonth.lengthBetween(from, to) + 1 },
-        (_, i) => months[from.append({ month: i }).month],
-      ),),
+      map((months) => Array.from({ length: TuiMonth.lengthBetween(from, to) + 1 }, (_, i) => months[from.append({ month: i }).month]))
     );
   }
 
-  readonly yStringify: TuiStringHandler<number> = (y) => `${(y).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${this.cs.currencyCode}`;
+  readonly yStringify: TuiStringHandler<number> = (y) => `${y.toLocaleString('en-US', { maximumFractionDigits: 0 })} ${this.cs.currencyCode}`;
 
   @tuiPure
   private computeValue({ from, to }: TuiDayRange, data: IAdd[]): ReadonlyArray<[TuiDay, number]> {
@@ -81,7 +73,7 @@ export class AnalyticsLineDaysComponent implements AfterContentInit {
 
     const convertedData = allDays.map((day) => {
       const amount = groupedData.get(day) || 0;
-      return [TuiDay.fromLocalNativeDate((new Date(day))), amount] as [TuiDay, number];
+      return [TuiDay.fromLocalNativeDate(new Date(day)), amount] as [TuiDay, number];
     });
 
     return convertedData;

@@ -13,7 +13,7 @@ export class CalendarLocalService {
     const storageRange = window.localStorage.getItem('saved-calendar-range') || '';
     if (!storageRange) return this.currentMonthRange;
 
-    const parsedStorageRange: { from: string, to: string } = JSON.parse(storageRange);
+    const parsedStorageRange: { from: string; to: string } = JSON.parse(storageRange);
     const parsedFrom = this.parseTuiDay(parsedStorageRange.from);
     const parsedTo = this.parseTuiDay(parsedStorageRange.to);
     return new TuiDayRange(parsedFrom, parsedTo);

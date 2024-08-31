@@ -8,19 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [
-    ShellComponent,
-    HeaderComponent,
-    NotFoundComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    TuiButtonModule,
-    TuiGroupModule,
-  ],
-  providers: [
-    CalendarLocalService
-  ]
+  declarations: [ShellComponent, HeaderComponent, NotFoundComponent],
+  imports: [CommonModule, RouterModule, TuiButtonModule, TuiGroupModule],
+  providers: [CalendarLocalService],
 })
-export class CoreModule { }
+export class CoreModule {}

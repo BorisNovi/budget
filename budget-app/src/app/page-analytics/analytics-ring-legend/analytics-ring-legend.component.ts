@@ -5,7 +5,7 @@ import { CurrencyService } from 'src/app/common';
   selector: 'app-analytics-ring-legend',
   templateUrl: './analytics-ring-legend.component.html',
   styleUrls: ['./analytics-ring-legend.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnalyticsRingLegendComponent {
   @Input() public sumsOfExpences!: number[];

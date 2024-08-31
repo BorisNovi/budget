@@ -1,151 +1,89 @@
 <div class="main__wrapper">
   <tui-island>
-    <form class="main__form"
-      [formGroup]="inputForm"
-      (ngSubmit)="showCategoryDialog()">
-
-        <div class="main__type">
-          <span class="main__type__header tui-text_body-xl">{{'ADD_PAGE.ADD_AMOUNT' | translate}}</span>
-          <div
-            tuiGroup
-            class="main__type__group"
-            [adaptive]="true"
-            [collapsed]="true">
-            <tui-radio-block
-              formControlName="expencesType"
-              [item]="expenceItem"
-              size="m"
-              [hideRadio]="true"
-              >
-              {{"COMMON.EXPENCE" | translate}}
-            </tui-radio-block>
-            <tui-radio-block
-              formControlName="expencesType"
-              [item]="incomeItem"
-              size="m"
-              [hideRadio]="true"
-              >
-              {{"COMMON.INCOME" | translate}}
-            </tui-radio-block>
-          </div>
+    <form class="main__form" [formGroup]="inputForm" (ngSubmit)="showCategoryDialog()">
+      <div class="main__type">
+        <span class="main__type__header tui-text_body-xl">{{ 'ADD_PAGE.ADD_AMOUNT' | translate }}</span>
+        <div tuiGroup class="main__type__group" [adaptive]="true" [collapsed]="true">
+          <tui-radio-block formControlName="expencesType" [item]="expenceItem" size="m" [hideRadio]="true">
+            {{ 'COMMON.EXPENCE' | translate }}
+          </tui-radio-block>
+          <tui-radio-block formControlName="expencesType" [item]="incomeItem" size="m" [hideRadio]="true">
+            {{ 'COMMON.INCOME' | translate }}
+          </tui-radio-block>
         </div>
-        <div class="main__display">
-          <tui-input
-            class="main__display__value"
-            formControlName="amount"
-            [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
-            [tuiTextfieldLabelOutside]="true"
-            appFloatInput
-            [floatInputDecimalPart]="2"
-            >
-          </tui-input>
-          <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
-        </div>
+      </div>
+      <div class="main__display">
+        <tui-input
+          class="main__display__value"
+          formControlName="amount"
+          [tuiTextfieldPostfix]="cs.currencyCode | tuiCurrency"
+          [tuiTextfieldLabelOutside]="true"
+          appFloatInput
+          [floatInputDecimalPart]="2">
+        </tui-input>
+        <tui-error formControlName="amount" [error]="['Min amount 0.01'] | tuiFieldError | async"></tui-error>
+      </div>
 
-        <app-numpad (num)="onNumpadNum($event)" (backspace)="onBackspace()"></app-numpad>
+      <app-numpad (num)="onNumpadNum($event)" (backspace)="onBackspace()"></app-numpad>
 
-        <div class="main__options">
-          <button
-            tuiIconButton
-            appearance="flat"
-            type="button"
-            class="tui-space_right-3"
-            [showLoader]="false"
-            icon="tuiIconEditLarge"
-            (click)="showCommentDialog()"
-          >
-          </button>
+      <div class="main__options">
+        <button
+          tuiIconButton
+          appearance="flat"
+          type="button"
+          class="tui-space_right-3"
+          [showLoader]="false"
+          icon="tuiIconEditLarge"
+          (click)="showCommentDialog()">
+        </button>
 
-          <button
-            tuiIconButton
-            appearance="accent"
-            type="submit"
-            class="tui-space_right-3"
-            [showLoader]="false"
-            icon="tuiIconCornerDownLeftLarge"
-            [disabled]="!inputForm.valid"
-            appVibrateOnClick
-          >
-          </button>
+        <button
+          tuiIconButton
+          appearance="accent"
+          type="submit"
+          class="tui-space_right-3"
+          [showLoader]="false"
+          icon="tuiIconCornerDownLeftLarge"
+          [disabled]="!inputForm.valid"
+          appVibrateOnClick>
+        </button>
 
-          <button
-            tuiIconButton
-            [appearance]="datepickerDate ? 'destructive' : 'flat'"
-            type="button"
-            class="tui-space_right-3"
-            [showLoader]="false"
-            icon="tuiIconCalendarLarge"
-            (click)="showDateDialog()"
-            >
-          </button>
-        </div>
+        <button
+          tuiIconButton
+          [appearance]="datepickerDate ? 'destructive' : 'flat'"
+          type="button"
+          class="tui-space_right-3"
+          [showLoader]="false"
+          icon="tuiIconCalendarLarge"
+          (click)="showDateDialog()">
+        </button>
+      </div>
     </form>
   </tui-island>
 </div>
 
-
-<ng-template
-  let-observer
-  [tuiDialogOptions]="{label: 'Select Date', size: 'auto'}"
-  [(tuiDialog)]="dateDialogOpen">
-  <form
-    class="datepicker-dialog"
-    [formGroup]="inputForm"
-    (ngSubmit)="observer.complete()">
-    <tui-calendar
-      class="datepicker-dialog__calendar"
-      [value]="datepickerDate"
-      (dayClick)="onDayClick($event)">
-    </tui-calendar>
-    <p
-      class="datepicker-dialog__buttons">
-      <button
-      tuiIconButton
-      appearance="destructive"
-      (click)="resetDate()"
-      icon="tuiIconXLarge">
+<ng-template let-observer [tuiDialogOptions]="{ label: 'Select Date', size: 'auto' }" [(tuiDialog)]="dateDialogOpen">
+  <form class="datepicker-dialog" [formGroup]="inputForm" (ngSubmit)="observer.complete()">
+    <tui-calendar class="datepicker-dialog__calendar" [value]="datepickerDate" (dayClick)="onDayClick($event)"> </tui-calendar>
+    <p class="datepicker-dialog__buttons">
+      <button tuiIconButton appearance="destructive" (click)="resetDate()" icon="tuiIconXLarge">
       </button>
-      <button
-        tuiIconButton
-        appearance="flat"
-        type="submit"
-        icon="tuiIconCheckLarge"
-        appVibrateOnClick
-        >
+      <button tuiIconButton appearance="flat" type="submit" icon="tuiIconCheckLarge" appVibrateOnClick>
       </button>
     </p>
   </form>
 </ng-template>
 
-<ng-template
-  let-observer
-  [tuiDialogOptions]="{label: 'Comment', size: 'm'}"
-  [(tuiDialog)]="commentDialogOpen">
-  <form
-    class="comment-dialog"
-    [formGroup]="inputForm"
-    (ngSubmit)="observer.complete();">
-    <tui-input
-      [tuiTextfieldLabelOutside]="true"
-      formControlName="comment">
+<ng-template let-observer [tuiDialogOptions]="{ label: 'Comment', size: 'm' }" [(tuiDialog)]="commentDialogOpen">
+  <form class="comment-dialog" [formGroup]="inputForm" (ngSubmit)="observer.complete()">
+    <tui-input [tuiTextfieldLabelOutside]="true" formControlName="comment">
       <input [placeholder]="'ADD_PAGE.COMMENT' | translate" tuiTextfield />
     </tui-input>
     <tui-error formControlName="comment" [error]="[] | tuiFieldError | async"></tui-error>
-    <p
-      class="comment-dialog__buttons">
-      <button
-      tuiIconButton
-      appearance="destructive"
-      (click)="resetComment()"
-      icon="tuiIconXLarge">
+    <p class="comment-dialog__buttons">
+      <button tuiIconButton appearance="destructive" (click)="resetComment()" icon="tuiIconXLarge">
       </button>
-      <button
-        tuiIconButton
-        appearance="flat"
-        type="submit"
-        icon="tuiIconCheckLarge"
-        appVibrateOnClick
-        >
+      <button tuiIconButton appearance="flat" type="submit" icon="tuiIconCheckLarge" appVibrateOnClick>
       </button>
     </p>
   </form>
@@ -153,21 +91,20 @@
 
 <ng-template
   let-observer
-  [tuiDialogOptions]="{label: 'COMMON.CATEGORY' | translate, size: 'm'}"
+  [tuiDialogOptions]="{ label: 'COMMON.CATEGORY' | translate, size: 'm' }"
   [(tuiDialog)]="categoryDialogOpen">
-  <form
-    [formGroup]="inputForm"
-    (ngSubmit)="observer.complete()">
+  <form [formGroup]="inputForm" (ngSubmit)="observer.complete()">
     <div class="categories-dialog">
-      <div class="categories-dialog__wrapper"
+      <div
+        class="categories-dialog__wrapper"
         *ngFor="let category of inputForm.get('expencesType')?.value === expenceItem ? expencesCategories : incomeCategories">
         <button
-        tuiButton
-        type="submit"
-        appearance="destructive"
-        (click)="submit(category)"
-        appVibrateOnClick
-        class="categories-dialog__button">
+          tuiButton
+          type="submit"
+          appearance="destructive"
+          (click)="submit(category)"
+          appVibrateOnClick
+          class="categories-dialog__button">
           <span>{{ 'CATEGORY.' + category | translate }}</span>
         </button>
       </div>

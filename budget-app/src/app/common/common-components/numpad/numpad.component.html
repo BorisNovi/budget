@@ -3,7 +3,13 @@
     {{ key }}
   </button>
 
-  <button *ngIf="i === keyRows.length - 1" (click)="onBackspace()" appearance="outline" size="m" tuiButton
-    type="button" icon="tuiIconDelete">
+  <button
+    *ngIf="i === keyRows.length - 1"
+    (click)="onBackspace()"
+    appearance="outline"
+    size="m"
+    tuiButton
+    type="button"
+    icon="tuiIconDelete">
   </button>
 </div>

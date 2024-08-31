@@ -1,18 +1,15 @@
-
 <tui-island class="analytics">
-	<tui-axes
+  <tui-axes
     *ngIf="computeLabels$(range) | async as labels"
     class="analytics__axes"
     [axisXLabels]="labels"
     [horizontalLines]="10"
-    [verticalLines]="labels.length"
->
+    [verticalLines]="labels.length">
     <tui-line-days-chart
-        class="analytics__axes__line-chart"
-        [height]="maxValue"
-        [value]="value"
-        [xStringify]="xStringify$ | async"
-        [yStringify]="yStringify"
-    ></tui-line-days-chart>
+      class="analytics__axes__line-chart"
+      [height]="maxValue"
+      [value]="value"
+      [xStringify]="xStringify$ | async"
+      [yStringify]="yStringify"></tui-line-days-chart>
   </tui-axes>
 </tui-island>

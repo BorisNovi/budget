@@ -1,20 +1,20 @@
 [tuiTh],
 [tuiTd] {
-    border-inline-start: none;
-    border-inline-end: none;
-    border-top: none;
-    // border-bottom: none;
-    // padding: 2px;
+  border-inline-start: none;
+  border-inline-end: none;
+  border-top: none;
+  // border-bottom: none;
+  // padding: 2px;
 }
- 
+
 [tuiTable][data-size='s'] [tuiTitle] {
-    flex-direction: row;
-    gap: 0.375rem;
+  flex-direction: row;
+  gap: 0.375rem;
 }
- 
+
 [tuiTd] > tui-items-with-more {
-    gap: 0.25rem;
-    max-width: 110px;
+  gap: 0.25rem;
+  max-width: 110px;
 }
 
 .transactions {
@@ -42,13 +42,13 @@
       &__info {
         display: flex;
         flex-direction: column;
-        gap: .25em;
+        gap: 0.25em;
 
         &__main-text {
         }
 
         &__sub-text {
-          font-size: .7em;
+          font-size: 0.7em;
           line-height: 1em;
         }
       }

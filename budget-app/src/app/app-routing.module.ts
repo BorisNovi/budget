@@ -10,22 +10,32 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'add' },
       {
-        path: 'add', loadChildren: () => import('./page-add/page-add.module').then((module) => module.PageAddModule), canActivate: []
+        path: 'add',
+        loadChildren: () => import('./page-add/page-add.module').then((module) => module.PageAddModule),
+        canActivate: [],
       },
-      { path: 'funds', loadChildren: () => import('./page-funds/page-funds.module').then((module) => module.PageFundsModule), canActivate: [] },
+      {
+        path: 'funds',
+        loadChildren: () => import('./page-funds/page-funds.module').then((module) => module.PageFundsModule),
+        canActivate: [],
+      },
       {
         path: 'analytics',
         loadChildren: () => import('./page-analytics/page-analytics.module').then((module) => module.PageAnalyticsModule),
         canActivate: [],
       },
-      { path: 'settings', loadChildren: () => import('./page-settings/page-settings.module').then((module) => module.PageSettingsModule), canActivate: [] },
-      { path: '**', component: NotFoundComponent }
-    ]
-  }
+      {
+        path: 'settings',
+        loadChildren: () => import('./page-settings/page-settings.module').then((module) => module.PageSettingsModule),
+        canActivate: [],
+      },
+      { path: '**', component: NotFoundComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

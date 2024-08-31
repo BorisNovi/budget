@@ -3,7 +3,7 @@ import { TuiDay } from '@taiga-ui/cdk';
 import { ExpenceTypeKey, IAdd } from 'src/app/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalService {
   constructor() {}

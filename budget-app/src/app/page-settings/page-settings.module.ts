@@ -9,13 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingsComponent } from './settings/settings.component';
 
-const routes = [
-  { path: '', component: SettingsComponent },
-];
+const routes = [{ path: '', component: SettingsComponent }];
 @NgModule({
-  declarations: [
-    SettingsComponent
-  ],
+  declarations: [SettingsComponent],
   imports: [
     CommonModule,
     TuiButtonModule,
@@ -28,6 +24,6 @@ const routes = [
     TuiTextfieldControllerModule,
     TranslateModule,
     RouterModule.forChild(routes),
-  ]
+  ],
 })
-export class PageSettingsModule { }
+export class PageSettingsModule {}

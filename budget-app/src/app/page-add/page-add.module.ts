@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import {
-  TuiButtonModule, TuiCalendarModule, TuiDialogModule, TuiErrorModule, TuiGroupModule, TuiTextfieldControllerModule
+  TuiButtonModule,
+  TuiCalendarModule,
+  TuiDialogModule,
+  TuiErrorModule,
+  TuiGroupModule,
+  TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
   TuiInputModule,
@@ -17,13 +22,13 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { TuiAutoFocusModule } from '@taiga-ui/cdk';
-import { FloatInputPipe, FloatInputDirective, NumpadComponent, VibrateOnClickDirective } from 'src/app/common';
+import {
+  FloatInputPipe, FloatInputDirective, NumpadComponent, VibrateOnClickDirective
+} from 'src/app/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { AddComponent } from './add/add.component';
 
-const routes: Routes = [
-  { path: '', component: AddComponent },
-];
+const routes: Routes = [{ path: '', component: AddComponent }];
 
 const options: Partial<TuiToggleOptions> = {
   icons: {
@@ -45,12 +50,10 @@ const tuiImports = [
   TuiGroupModule,
   TuiRadioBlockModule,
   TuiIslandModule,
-  TuiAutoFocusModule
+  TuiAutoFocusModule,
 ];
 @NgModule({
-  declarations: [
-    AddComponent
-  ],
+  declarations: [AddComponent],
   imports: [
     CommonModule,
     tuiImports,
@@ -60,7 +63,7 @@ const tuiImports = [
     TranslateModule,
     NumpadComponent,
     FloatInputDirective,
-    VibrateOnClickDirective
+    VibrateOnClickDirective,
   ],
   providers: [
     {
@@ -70,7 +73,7 @@ const tuiImports = [
         ...options,
       },
     },
-    FloatInputPipe
+    FloatInputPipe,
   ],
 })
-export class PageAddModule { }
+export class PageAddModule {}

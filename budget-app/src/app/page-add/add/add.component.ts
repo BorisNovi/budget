@@ -1,13 +1,15 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import {
-  FormBuilder, FormGroup, Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
 import {
-  LocalService, CurrencyService, ExpenceCategory, IncomeCategory, ExpenceTypeKey,
+  LocalService,
+  CurrencyService,
+  ExpenceCategory,
+  IncomeCategory,
+  ExpenceTypeKey,
   FloatInputPipe,
-  IAdd
+  IAdd,
 } from 'src/app/common';
 
 @Component({
@@ -23,12 +25,11 @@ import {
         required: 'Enter amount!',
         min: ({ min }: { min: number }) => `Min value is ${min}`,
         max: ({ max }: { max: number }) => `Max value is ${max}`,
-        maxLength: ({ maxLength }: { maxLength: number }) => `Max length is ${maxLength}`
+        maxLength: ({ maxLength }: { maxLength: number }) => `Max length is ${maxLength}`,
       },
     },
   ],
 })
-
 export class AddComponent {
   readonly expenceItem = ExpenceTypeKey.EXPENCE;
   readonly incomeItem = ExpenceTypeKey.INCOME;
@@ -52,7 +53,7 @@ export class AddComponent {
       amount: [null, [Validators.required, Validators.min(0.01), Validators.max(99999999)]],
       date: [this.today, []],
       comment: ['', [Validators.maxLength(40)]],
-      category: ['', []]
+      category: ['', []],
     });
   }
 
@@ -90,7 +91,7 @@ export class AddComponent {
     const completeData: IAdd = {
       ...this.inputForm.value,
       amount: +this.inputForm.controls['amount'].value,
-      dateStr: this.inputForm.value.date
+      dateStr: this.inputForm.value.date,
     };
 
     this.localService.set(completeData.expencesType, completeData);

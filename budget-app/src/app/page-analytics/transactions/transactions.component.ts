@@ -5,15 +5,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import {
-  IAdd, CalendarLocalService, LocalService, ExpenceTypeKey,
-  CurrencyService
+  IAdd, CalendarLocalService, LocalService, ExpenceTypeKey, CurrencyService
 } from 'src/app/common';
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsComponent implements OnInit {
   public transactionList: IAdd[] = [];
@@ -26,16 +25,14 @@ export class TransactionsComponent implements OnInit {
     private localService: LocalService,
     public calendarLocalService: CalendarLocalService,
     public cs: CurrencyService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.route.queryParams
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((params) => {
-        if (params['expenceTypeKey']) {
-          this.expenceTypeKey = params['expenceTypeKey'];
-        }
-      });
+    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      if (params['expenceTypeKey']) {
+        this.expenceTypeKey = params['expenceTypeKey'];
+      }
+    });
 
     this.updateTransactionsList();
   }

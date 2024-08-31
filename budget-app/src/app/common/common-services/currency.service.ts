@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrencyService {
   private _currency = 'USD';
-  constructor() { }
+  constructor() {}
 
   get currencyCode() {
     // eslint-disable-next-line no-underscore-dangle

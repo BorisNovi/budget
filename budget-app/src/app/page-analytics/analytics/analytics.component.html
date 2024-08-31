@@ -3,23 +3,33 @@
 
   <div class="analytics__buttons">
     <button
-    class="analytics__buttons__date-selector"
-    iconRight="tuiIconCalendar"
-    appearance="destructive"
-    tuiButton
-    size="m"
-    type="button"
-    (click)="dateDialogOpen = true">
-     {{ calendarValue.to !== calendarValue.from ? calendarValue.from + '-' + calendarValue.to : calendarValue.from }}
+      class="analytics__buttons__date-selector"
+      iconRight="tuiIconCalendar"
+      appearance="destructive"
+      tuiButton
+      size="m"
+      type="button"
+      (click)="dateDialogOpen = true">
+      {{ calendarValue.to !== calendarValue.from ? calendarValue.from + '-' + calendarValue.to : calendarValue.from }}
     </button>
 
     <!-- dialog -->
-    <ng-template let-observer [tuiDialogOptions]="{label: 'Select Date', size: 'auto'}" [(tuiDialog)]="dateDialogOpen">
+    <ng-template let-observer [tuiDialogOptions]="{ label: 'Select Date', size: 'auto' }" [(tuiDialog)]="dateDialogOpen">
       <div class="analytics__calendar-dialog">
-        <tui-calendar [maxViewedMonth]="firstMonth" [month]="firstMonth" [(hoveredItem)]="hoveredItem" [showAdjacent]="true"
-        [value]="calendarValue" (dayClick)="onDayClick($event)" />
+        <tui-calendar
+          [maxViewedMonth]="firstMonth"
+          [month]="firstMonth"
+          [(hoveredItem)]="hoveredItem"
+          [showAdjacent]="true"
+          [value]="calendarValue"
+          (dayClick)="onDayClick($event)" />
         <p class="analytics__calendar-dialog__buttons">
-          <button tuiIconButton  appearance="flat" type="submit" icon="tuiIconCornerUpLeftLarge" (click)="dateDialogOpen = false">
+          <button
+            tuiIconButton
+            appearance="flat"
+            type="submit"
+            icon="tuiIconCornerUpLeftLarge"
+            (click)="dateDialogOpen = false">
           </button>
         </p>
       </div>
@@ -28,30 +38,36 @@
     <div tuiGroup class="analytics__buttons__group" [adaptive]="false" [collapsed]="true">
       <tui-radio-block [item]="expenceItem" size="s" [formControl]="expenceForm" [hideRadio]="true">
         Expence
-        <a tuiIconButton routerLink="/analytics/transactions" [queryParams]="{ expenceTypeKey: expenceItem }"
-          class="analytics__buttons__options left" appearance="flat" icon="tuiIconListLarge" size="s">
+        <a
+          tuiIconButton
+          routerLink="/analytics/transactions"
+          [queryParams]="{ expenceTypeKey: expenceItem }"
+          class="analytics__buttons__options left"
+          appearance="flat"
+          icon="tuiIconListLarge"
+          size="s">
         </a>
       </tui-radio-block>
       <tui-radio-block [item]="incomeItem" size="s" [formControl]="expenceForm" [hideRadio]="true">
         Income
-        <a tuiIconButton routerLink="/analytics/transactions" [queryParams]="{ expenceTypeKey: incomeItem }"
-          class="analytics__buttons__options right" appearance="flat" icon="tuiIconListLarge" size="s">
+        <a
+          tuiIconButton
+          routerLink="/analytics/transactions"
+          [queryParams]="{ expenceTypeKey: incomeItem }"
+          class="analytics__buttons__options right"
+          appearance="flat"
+          icon="tuiIconListLarge"
+          size="s">
         </a>
       </tui-radio-block>
     </div>
   </div>
 
   <div class="analytics__items">
-    <app-analytics-ring-legend
-      [labelsOfExpences]="labelsOfExpences"
-      [sumsOfExpences]="sumsOfExpences"
-      [total]="total">
+    <app-analytics-ring-legend [labelsOfExpences]="labelsOfExpences" [sumsOfExpences]="sumsOfExpences" [total]="total">
     </app-analytics-ring-legend>
 
     <!-- TODO: показывать нижнюю аналитику, только если выбрано от месяца -->
-    <app-analytics-line-days
-      [dataForAnalyics]="dataForAnalytics"
-      [range]="calendarValue">
-    </app-analytics-line-days>
+    <app-analytics-line-days [dataForAnalyics]="dataForAnalytics" [range]="calendarValue"> </app-analytics-line-days>
   </div>
 </div>

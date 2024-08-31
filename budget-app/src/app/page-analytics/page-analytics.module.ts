@@ -20,7 +20,7 @@ import { ShortNumsPipe } from '../common';
 
 const routes = [
   { path: '', component: AnalyticsComponent },
-  { path: 'transactions', component: TransactionsComponent }
+  { path: 'transactions', component: TransactionsComponent },
 ];
 
 const tuiImports = [
@@ -41,21 +41,10 @@ const tuiImports = [
   TuiCurrencyPipeModule,
   TuiTableModule,
   TuiDialogModule,
-  TuiCalendarModule
+  TuiCalendarModule,
 ];
 @NgModule({
-  declarations: [
-    AnalyticsComponent,
-    AnalyticsRingLegendComponent,
-    AnalyticsLineDaysComponent,
-    TransactionsComponent,
-  ],
-  imports: [
-    CommonModule,
-    tuiImports,
-    ReactiveFormsModule,
-    ShortNumsPipe,
-    RouterModule.forChild(routes),
-  ]
+  declarations: [AnalyticsComponent, AnalyticsRingLegendComponent, AnalyticsLineDaysComponent, TransactionsComponent],
+  imports: [CommonModule, tuiImports, ReactiveFormsModule, ShortNumsPipe, RouterModule.forChild(routes)],
 })
-export class PageAnalyticsModule { }
+export class PageAnalyticsModule {}

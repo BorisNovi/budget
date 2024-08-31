@@ -2,9 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'float_input',
-  standalone: true
+  standalone: true,
 })
-
 export class FloatInputPipe implements PipeTransform {
   transform(value: string, prevValue: string, valueLimit = 9999999, decimalPart = 1): string {
     let newValue = String(value);

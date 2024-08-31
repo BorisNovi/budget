@@ -16,34 +16,55 @@
           <th tuiTh class="transactions__table__th">Actions</th>
         </tr>
         <tr class="" *ngFor="let transaction of transactionList; let i = index">
-          <td tuiTd class="transactions__table__td">{{transaction.id}}</td>
-          <td tuiTd class="transactions__table__td">{{transaction.date + '' | date: 'dd.MM.YY'}}</td>
+          <td tuiTd class="transactions__table__td">{{ transaction.id }}</td>
+          <td tuiTd class="transactions__table__td">{{ transaction.date + '' | date: 'dd.MM.YY' }}</td>
           <td tuiTd class="transactions__table__td">
             <div class="transactions__table__td__info">
-              <span class="transactions__table__td__info__main-text">{{transaction.category | uppercase}}</span>
-              <span class="transactions__table__td__info__sub-text">{{transaction.comment}}</span>
+              <span class="transactions__table__td__info__main-text">{{ transaction.category | uppercase }}</span>
+              <span class="transactions__table__td__info__sub-text">{{ transaction.comment }}</span>
             </div>
           </td>
-          <td tuiTd class="transactions__table__td">{{transaction.amount | short_nums}} {{cs.currencyCode |
-            tuiCurrency}}</td>
+          <td tuiTd class="transactions__table__td">{{ transaction.amount | short_nums }} {{ cs.currencyCode | tuiCurrency }}</td>
           <td tuiTd class="transactions__table__td">
-            <span tuiStatus class="transactions__table__td__actions"
+            <span
+              tuiStatus
+              class="transactions__table__td__actions"
               *ngIf="(showDeleteTemplateIndex | async) !== i; else isDelete">
-              <button tuiIconButton class="transactions__table__td__actions__button-delete" appearance="link"
-                icon="tuiIconTrash2" size="s" (click)="wannaDelete(i)">
+              <button
+                tuiIconButton
+                class="transactions__table__td__actions__button-delete"
+                appearance="link"
+                icon="tuiIconTrash2"
+                size="s"
+                (click)="wannaDelete(i)">
               </button>
-              <button tuiIconButton class="transactions__table__td__actions__button-edit" appearance="link"
-                icon="tuiIconEdit2" size="s" [disabled]="true">
+              <button
+                tuiIconButton
+                class="transactions__table__td__actions__button-edit"
+                appearance="link"
+                icon="tuiIconEdit2"
+                size="s"
+                [disabled]="true">
               </button>
             </span>
 
             <ng-template #isDelete>
               <span tuiStatus class="transactions__table__td__actions">
-                <button tuiIconButton class="transactions__table__td__actions__button-cancel" appearance="link"
-                  icon="tuiIconClose" size="s" (click)="showDeleteTemplateIndex.next(-1)">
+                <button
+                  tuiIconButton
+                  class="transactions__table__td__actions__button-cancel"
+                  appearance="link"
+                  icon="tuiIconClose"
+                  size="s"
+                  (click)="showDeleteTemplateIndex.next(-1)">
                 </button>
-                <button tuiIconButton class="transactions__table__td__actions__button-confirm" appearance="link"
-                  icon="tuiIconCheck" size="s" (click)="delete(transaction.id, transaction.dateStr)">
+                <button
+                  tuiIconButton
+                  class="transactions__table__td__actions__button-confirm"
+                  appearance="link"
+                  icon="tuiIconCheck"
+                  size="s"
+                  (click)="delete(transaction.id, transaction.dateStr)">
                 </button>
               </span>
             </ng-template>

@@ -7,8 +7,10 @@ export class VibroService {
   constructor() {
     if (this.isSupported) {
       navigator.vibrate([10, 100, 50]);
+      // eslint-disable-next-line no-console
       console.log('Vibration supported.');
     } else {
+      // eslint-disable-next-line no-console
       console.error('Vibration is not supported.');
     }
   }

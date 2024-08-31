@@ -1,14 +1,13 @@
 .analytics {
   &__axes {
-    height: 300px;
     width: 100%;
+    height: 300px;
     color: var(--tui-support-02);
 
-    &__line-chart {}
+    &__line-chart {
+    }
   }
 
   @media (max-width: 425px) {
-
   }
-
 }

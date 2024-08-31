@@ -1,7 +1,6 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import {
-  TuiRootModule, TUI_SANITIZER,
-  TuiThemeNightModule, TuiModeModule
+  TuiRootModule, TUI_SANITIZER, TuiThemeNightModule, TuiModeModule
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -27,14 +26,12 @@ const I18N_CONFIG = {
   loader: {
     provide: TranslateLoader,
     useFactory: HttpLoaderFactory,
-    deps: [HttpClient]
-  }
+    deps: [HttpClient],
+  },
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -51,6 +48,6 @@ const I18N_CONFIG = {
     TuiModeModule,
   ],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }, TranslatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

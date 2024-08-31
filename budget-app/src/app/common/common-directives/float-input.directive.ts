@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[appFloatInput]',
-  standalone: true
+  standalone: true,
 })
 export class FloatInputDirective {
   @Input() floatInputValueLimit = 9999999;

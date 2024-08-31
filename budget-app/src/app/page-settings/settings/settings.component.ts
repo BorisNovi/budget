@@ -6,20 +6,19 @@ import { TuiThemeNightService } from '@taiga-ui/addon-doc';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TuiCurrency } from '@taiga-ui/addon-commerce';
 import {
-  CurrencyService, ILanguageOption, LanguageSelectService,
-  LocalService
+  CurrencyService, ILanguageOption, LanguageSelectService, LocalService
 } from 'src/app/common';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent {
   public settingsForm = new FormGroup({
     currencyType: new FormControl(this.cs.currencyCode),
-    language: new FormControl()
+    language: new FormControl(),
   });
 
   public currencyCodes: string[] = Object.values(TuiCurrency);
@@ -32,13 +31,11 @@ export class SettingsComponent {
     private destroyRef: DestroyRef,
     public languageSelect: LanguageSelectService
   ) {
-    this.settingsForm.controls.currencyType.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((value) => {
-        if (value) {
-          this.cs.setCurrency(value);
-        }
-      });
+    this.settingsForm.controls.currencyType.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
+      if (value) {
+        this.cs.setCurrency(value);
+      }
+    });
 
     this.settingsForm.controls.language.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))

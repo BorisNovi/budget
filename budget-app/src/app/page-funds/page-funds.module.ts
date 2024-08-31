@@ -5,18 +5,9 @@ import { TuiIslandModule } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { FundsComponent } from './funds/funds.component';
 
-const routes = [
-  { path: '', component: FundsComponent },
-];
+const routes = [{ path: '', component: FundsComponent }];
 @NgModule({
-  declarations: [
-    FundsComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    TuiIslandModule,
-    TuiCurrencyPipeModule,
-  ]
+  declarations: [FundsComponent],
+  imports: [CommonModule, RouterModule.forChild(routes), TuiIslandModule, TuiCurrencyPipeModule],
 })
-export class PageFundsModule { }
+export class PageFundsModule {}

@@ -1,0 +1,27 @@
+{
+  "extends": ["stylelint-config-recommended-scss", "stylelint-config-prettier-scss"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-class-pattern": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "selector-pseudo-element-no-unknown": null,
+    "scss/no-global-function-names": null,
+    "no-descending-specificity": null,
+    "block-no-empty": null,
+    "order/properties-order": [
+      "width",
+      "height",
+      "max-width",
+      "max-height",
+      "padding",
+      "margin",
+      "display",
+      "flex-direction",
+      "flex-wrap",
+      "flex-flow",
+      "justify-content",
+      "align-items",
+      "align-content"
+    ]
+  }
+}

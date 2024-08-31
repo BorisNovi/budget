@@ -1,9 +1,5 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-  ViewEncapsulation,
-  OnInit
+  ChangeDetectionStrategy, Component, Inject, ViewEncapsulation, OnInit
 } from '@angular/core';
 
 import { TuiThemeNightService } from '@taiga-ui/addon-doc/services';
@@ -24,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
     public languageSelect: LanguageSelectService
-  ) { }
+  ) {}
 
   public ngOnInit(): void {
     this.languageSelect.buildLanguageOptions();
