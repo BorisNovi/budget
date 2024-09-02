@@ -1,5 +1,5 @@
 <div class="analytics__wrapper">
-  <h2>Analytics</h2>
+  <h2>{{ 'ANALYTICS_PAGE.ANALYTICS' | translate }}</h2>
 
   <div class="analytics__buttons">
     <button
@@ -14,7 +14,7 @@
     </button>
 
     <!-- dialog -->
-    <ng-template let-observer [tuiDialogOptions]="{ label: 'Select Date', size: 'auto' }" [(tuiDialog)]="dateDialogOpen">
+    <ng-template let-observer [tuiDialogOptions]="{ label: 'DIALOG.SELECT_DATE' | translate, size: 'auto' }" [(tuiDialog)]="dateDialogOpen">
       <div class="analytics__calendar-dialog">
         <tui-calendar
           [maxViewedMonth]="firstMonth"
@@ -37,7 +37,7 @@
 
     <div tuiGroup class="analytics__buttons__group" [adaptive]="false" [collapsed]="true">
       <tui-radio-block [item]="expenceItem" size="s" [formControl]="expenceForm" [hideRadio]="true">
-        Expence
+        {{ 'COMMON.EXPENCE' | translate }}
         <a
           tuiIconButton
           routerLink="/analytics/transactions"
@@ -49,7 +49,7 @@
         </a>
       </tui-radio-block>
       <tui-radio-block [item]="incomeItem" size="s" [formControl]="expenceForm" [hideRadio]="true">
-        Income
+        {{ 'COMMON.INCOME' | translate }}
         <a
           tuiIconButton
           routerLink="/analytics/transactions"

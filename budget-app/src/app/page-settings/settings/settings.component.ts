@@ -8,6 +8,7 @@ import { TuiCurrency } from '@taiga-ui/addon-commerce';
 import {
   CurrencyService, ILanguageOption, LanguageSelectService, LocalService
 } from 'src/app/common';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -45,8 +46,10 @@ export class SettingsComponent {
         }
       });
 
+    this.languageSelect.setSavedLang();
+
     this.languageSelect.currentLanguageOption$
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this.destroyRef), tap((lang) => console.log('lang in tap', lang)))
       .subscribe((lang) => this.settingsForm.controls.language.setValue(lang));
   }
 

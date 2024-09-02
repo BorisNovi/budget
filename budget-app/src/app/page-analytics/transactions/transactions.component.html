@@ -1,5 +1,5 @@
 <div class="transactions__wrapper">
-  <h2>{{ expenceTypeKey | titlecase }} transactions</h2>
+  <h2>{{ 'ANALYTICS_PAGE.TRANSACTIONS.' + expenceTypeKey + '_transactions' | uppercase | translate }}</h2>
 
   <div class="transactions__options">
     {{ calendarLocalService.currentMonthRange }}
@@ -10,17 +10,17 @@
       <tbody tuiTbody>
         <tr class="">
           <th tuiTh class="transactions__table__th">Id</th>
-          <th tuiTh class="transactions__table__th">Date</th>
-          <th tuiTh class="transactions__table__th">Info</th>
-          <th tuiTh class="transactions__table__th">Amount</th>
-          <th tuiTh class="transactions__table__th">Actions</th>
+          <th tuiTh class="transactions__table__th">{{ 'ANALYTICS_PAGE.TRANSACTIONS.DATE' | translate }}</th>
+          <th tuiTh class="transactions__table__th">{{ 'ANALYTICS_PAGE.TRANSACTIONS.INFO' | translate }}</th>
+          <th tuiTh class="transactions__table__th">{{ 'ANALYTICS_PAGE.TRANSACTIONS.AMOUNT' | translate }}</th>
+          <th tuiTh class="transactions__table__th">{{ 'ANALYTICS_PAGE.TRANSACTIONS.ACTION' | translate }}</th>
         </tr>
         <tr class="" *ngFor="let transaction of transactionList; let i = index">
           <td tuiTd class="transactions__table__td">{{ transaction.id }}</td>
           <td tuiTd class="transactions__table__td">{{ transaction.date + '' | date: 'dd.MM.YY' }}</td>
           <td tuiTd class="transactions__table__td">
             <div class="transactions__table__td__info">
-              <span class="transactions__table__td__info__main-text">{{ transaction.category | uppercase }}</span>
+              <span class="transactions__table__td__info__main-text">{{ 'CATEGORY.' + transaction.category | translate | uppercase }}</span>
               <span class="transactions__table__td__info__sub-text">{{ transaction.comment }}</span>
             </div>
           </td>

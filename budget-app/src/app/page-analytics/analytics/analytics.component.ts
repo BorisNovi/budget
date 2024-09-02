@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import {
   LocalService, CalendarLocalService, ExpenceCategory, IncomeCategory, ExpenceTypeKey
 } from 'src/app/common';
@@ -6,6 +6,7 @@ import {
   TuiDay, TuiDayRange, TuiMonth, tuiSum
 } from '@taiga-ui/cdk';
 import { FormControl } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-analytics',
@@ -30,6 +31,8 @@ export class AnalyticsComponent {
 
     this.calendarValue = TuiDayRange.sort(this.calendarValue.from, day);
     this.calendarLocalService.saveRange(this.calendarValue);
+
+    this.getData(this.expenceForm.value);
   }
 
   // Other
@@ -44,11 +47,16 @@ export class AnalyticsComponent {
 
   constructor(
     private localService: LocalService,
-    private calendarLocalService: CalendarLocalService
+    private calendarLocalService: CalendarLocalService,
+    private destroyRef: DestroyRef
   ) {
-    this.expenceForm.valueChanges.subscribe((val) => {
-      this.getData(val);
-    });
+    this.getData(this.expenceForm.value);
+
+    this.expenceForm.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((val) => {
+        this.getData(val);
+      });
   }
 
   // Analytics

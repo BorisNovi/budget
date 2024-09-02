@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TuiTableModule } from '@taiga-ui/addon-table';
+import { TranslateModule } from '@ngx-translate/core';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AnalyticsRingLegendComponent } from './analytics-ring-legend/analytics-ring-legend.component';
 import { AnalyticsLineDaysComponent } from './analytics-line-days/analytics-line-days.component';
@@ -45,6 +46,6 @@ const tuiImports = [
 ];
 @NgModule({
   declarations: [AnalyticsComponent, AnalyticsRingLegendComponent, AnalyticsLineDaysComponent, TransactionsComponent],
-  imports: [CommonModule, tuiImports, ReactiveFormsModule, ShortNumsPipe, RouterModule.forChild(routes)],
+  imports: [CommonModule, tuiImports, ReactiveFormsModule, ShortNumsPipe, RouterModule.forChild(routes), TranslateModule],
 })
 export class PageAnalyticsModule {}

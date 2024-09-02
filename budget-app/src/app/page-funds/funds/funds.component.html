@@ -1,11 +1,11 @@
 <div class="funds__wrapper">
-  <h2>Funds</h2>
+  <h2> {{ 'FUNDS_PAGE.FUNDS' | translate }}</h2>
 
   <div class="funds__sum">
     <h2 class="funds__sum__number" [ngClass]="{ funds_positive: fundsSum > 0, funds_negative: fundsSum < 0 }">
       {{ fundsSum }} {{ cs.currencyCode | tuiCurrency }}
     </h2>
-    <span class="funds__sum__description">Common balance</span>
+    <span class="funds__sum__description">{{ 'FUNDS_PAGE.COMMON_BALANCE' | translate }}</span>
   </div>
   <tui-island class="funds__items">
     <div class="funds__item" *ngFor="let fund of funds">

@@ -62,7 +62,7 @@
   </tui-island>
 </div>
 
-<ng-template let-observer [tuiDialogOptions]="{ label: 'Select Date', size: 'auto' }" [(tuiDialog)]="dateDialogOpen">
+<ng-template let-observer [tuiDialogOptions]="{ label: 'DIALOG.SELECT_DATE' | translate, size: 'auto' }" [(tuiDialog)]="dateDialogOpen">
   <form class="datepicker-dialog" [formGroup]="inputForm" (ngSubmit)="observer.complete()">
     <tui-calendar class="datepicker-dialog__calendar" [value]="datepickerDate" (dayClick)="onDayClick($event)"> </tui-calendar>
     <p class="datepicker-dialog__buttons">
@@ -74,7 +74,7 @@
   </form>
 </ng-template>
 
-<ng-template let-observer [tuiDialogOptions]="{ label: 'Comment', size: 'm' }" [(tuiDialog)]="commentDialogOpen">
+<ng-template let-observer [tuiDialogOptions]="{ label: 'DIALOG.ADD_COMMENT' | translate, size: 'm' }" [(tuiDialog)]="commentDialogOpen">
   <form class="comment-dialog" [formGroup]="inputForm" (ngSubmit)="observer.complete()">
     <tui-input [tuiTextfieldLabelOutside]="true" formControlName="comment">
       <input [placeholder]="'ADD_PAGE.COMMENT' | translate" tuiTextfield />

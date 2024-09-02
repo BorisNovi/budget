@@ -1,10 +1,10 @@
 <div class="settings__wrapper">
-  <h2>Settings</h2>
+  <h2>{{ 'SETTINGS_PAGE.SETTINGS' | translate }}</h2>
 
   <div class="settings__params">
     <!-- Theme -->
     <tui-island class="settings__params__item">
-      <span class="settings__params__item__text"> Theme </span>
+      <span class="settings__params__item__text">{{ 'SETTINGS_PAGE.THEME' | translate }}</span>
       <button
         appearance="secondary-destructive"
         tuiIconButton
@@ -17,7 +17,7 @@
 
     <!-- Currency -->
     <tui-island class="settings__params__item">
-      <span class="settings__params__item__text"> Currency </span>
+      <span class="settings__params__item__text">{{ 'SETTINGS_PAGE.CURRENCY' | translate }}</span>
       <form [formGroup]="settingsForm" class="settings__params__item__form-currency">
         <tui-select formControlName="currencyType" [tuiTextfieldLabelOutside]="true" [tuiTextfieldCustomContent]="flag">
           <tui-data-list-wrapper *tuiDataList [items]="currencyCodes" [itemContent]="currencyContent"></tui-data-list-wrapper>
@@ -47,7 +47,7 @@
 
     <!-- Language -->
     <tui-island class="settings__params__item">
-      <span class="settings__params__item__text"> Language </span>
+      <span class="settings__params__item__text">{{ 'SETTINGS_PAGE.LANGUAGE' | translate }}</span>
       <form [formGroup]="settingsForm" class="settings__params__item__form-language">
         <tui-select
           formControlName="language"
@@ -84,11 +84,11 @@
 
     <!-- Delete -->
     <tui-island class="settings__params__item">
-      <span class="settings__params__item__text"> Delete data </span>
+      <span class="settings__params__item__text">{{ 'SETTINGS_PAGE.DELETE_DATA' | translate }}</span>
       <button
         appearance="secondary-destructive"
         tuiIconButton
-        icon="tuiIconTrash"
+        icon="tuiIconTrashLarge"
         type="button"
         class="settings__params__item__button"
         (click)="showDeleteDialog()">
@@ -97,14 +97,14 @@
 
     <ng-template
       let-observer
-      [tuiDialogOptions]="{ label: 'You can\'t recover it!', size: 'm' }"
+      [tuiDialogOptions]="{ label: 'SETTINGS_PAGE.CANT_RECOVER' | translate, size: 'm' }"
       [(tuiDialog)]="deleteDialogOpen">
       <div class="settings-dialog__wrapper">
         <button tuiButton type="button" appearance="accent" (click)="deleteData()" class="settings-dialog__button">
-          <span>Delete</span>
+          <span>{{ 'SETTINGS_PAGE.DELETE' | translate }}</span>
         </button>
         <button tuiButton type="button" appearance="outline" (click)="observer.complete()" class="settings-dialog__button">
-          <span>Cancel</span>
+          <span>{{ 'SETTINGS_PAGE.CANCEL' | translate }}</span>
         </button>
       </div>
     </ng-template>

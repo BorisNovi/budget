@@ -1,7 +1,7 @@
 <tui-island class="analytics__items__chart-1">
   <tui-ring-chart class="analytics__items__chart-1__ring" [value]="sumsOfExpences" [(activeItemIndex)]="activeItemIndex">
     <div>{{ total | short_nums }} {{ cs.currencyCode | tuiCurrency }}</div>
-    <div>Total</div>
+    <div>{{ 'ANALYTICS_PAGE.TOTAL' | translate }}</div>
   </tui-ring-chart>
 
   <div class="analytics__items__chart-1__legend">
@@ -11,7 +11,7 @@
       class="analytics__items__chart-1__legend__item"
       [active]="isItemActive(index)"
       [color]="getColor(index)"
-      [text]="label"
+      [text]="'CATEGORY.' + label | translate"
       (tuiHoveredChange)="onHover(index, $event)">
       <div>{{ sumsOfExpences[index] | short_nums }} {{ cs.currencyCode | tuiCurrency }}</div>
     </tui-legend-item>

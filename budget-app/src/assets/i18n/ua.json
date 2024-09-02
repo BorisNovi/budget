@@ -3,23 +3,56 @@
   "COMMON": {
     "EXPENCE": "Витрата",
     "INCOME": "Дохід",
-    "CATEGORY": "Категорiя"
+    "CATEGORY": "Категорія"
+  },
+  "DIALOG": {
+    "SELECT_DATE": "Виберіть дату",
+    "ADD_COMMENT": "Додати коментар"
   },
   "CATEGORY": {
-    "food": "Продукти",
-    "restaurant": "Ресторани",
-    "transport": "Транспорт",
-    "rent": "Оренда",
-    "home": "Дiм",
-    "entertainment": "Розваги",
-    "electronics": "Електроніка",
-    "soft": "Софт",
-    "medical": "Медицина",
-    "clothes": "Одяг",
-    "else": "Інше"
+    "food": "продукти",
+    "restaurant": "ресторани",
+    "transport": "транспорт",
+    "rent": "оренда",
+    "home": "дім",
+    "entertainment": "розваги",
+    "electronics": "електроніка",
+    "soft": "ПО",
+    "medical": "медицина",
+    "clothes": "одяг",
+    "else": "інше",
+    "business": "бізнес",
+    "sell": "продаж",
+    "gifts": "подарунки"
   },
   "ADD_PAGE": {
     "ADD_AMOUNT": "Додати суму",
-    "COMMENT": "Щось..."
+    "COMMENT": "Коментар..."
+  },
+  "FUNDS_PAGE": {
+    "FUNDS": "Кошти",
+    "COMMON_BALANCE": "Загальний баланс"
+  },
+  "ANALYTICS_PAGE": {
+    "ANALYTICS": "Аналітика",
+    "TOTAL": "Всього",
+    "TRANSACTIONS": {
+      "EXPENCE_TRANSACTIONS": "Транзакції витрат",
+      "INCOME_TRANSACTIONS": "Транзакції доходів",
+      "DATE": "Дата",
+      "INFO": "Інформація",
+      "AMOUNT": "Сума",
+      "ACTION": "Дія"
+    }
+  },
+  "SETTINGS_PAGE": {
+    "SETTINGS": "Налаштування",
+    "THEME": "Тема",
+    "CURRENCY": "Валюта",
+    "LANGUAGE": "Мова",
+    "DELETE_DATA": "Видалити дані",
+    "DELETE": "Видалити",
+    "CANCEL": "Скасувати",
+    "CANT_RECOVER": "Цю дію не можна скасувати!"
   }
 }

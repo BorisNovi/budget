@@ -1,25 +1,58 @@
 {
-  "TEST": "Тест ок",
+  "TEST": "тест пройден",
   "COMMON": {
-    "EXPENCE": "Трата",
+    "EXPENCE": "Расход",
     "INCOME": "Доход",
     "CATEGORY": "Категория"
   },
+  "DIALOG": {
+    "SELECT_DATE": "Выберите дату",
+    "ADD_COMMENT": "Добавить комментарий"
+  },
   "CATEGORY": {
-    "food": "Продукты",
-    "restaurant": "Рестораны",
-    "transport": "Транспорт",
-    "rent": "Аренда",
-    "home": "Дом",
-    "entertainment": "Развлечения",
-    "electronics": "Электроника",
-    "soft": "Софт",
-    "medical": "Медицина",
-    "clothes": "Одежда",
-    "else": "Другое"
+    "food": "продукты",
+    "restaurant": "ресторан",
+    "transport": "транспорт",
+    "rent": "аренда",
+    "home": "дом",
+    "entertainment": "развлечения",
+    "electronics": "электроника",
+    "soft": "ПО",
+    "medical": "медицина",
+    "clothes": "одежда",
+    "else": "прочее",
+    "business": "бизнес",
+    "sell": "продажа",
+    "gifts": "подарки"
   },
   "ADD_PAGE": {
     "ADD_AMOUNT": "Добавить сумму",
-    "COMMENT": "Что-то..."
+    "COMMENT": "Комментарий..."
+  },
+  "FUNDS_PAGE": {
+    "FUNDS": "Средства",
+    "COMMON_BALANCE": "Общий баланс"
+  },
+  "ANALYTICS_PAGE": {
+    "ANALYTICS": "Аналитика",
+    "TOTAL": "Итого",
+    "TRANSACTIONS": {
+      "EXPENCE_TRANSACTIONS": "Транзакции расходов",
+      "INCOME_TRANSACTIONS": "Транзакции доходов",
+      "DATE": "Дата",
+      "INFO": "Информация",
+      "AMOUNT": "Сумма",
+      "ACTION": "Действие"
+    }
+  },
+  "SETTINGS_PAGE": {
+    "SETTINGS": "Настройки",
+    "THEME": "Тема",
+    "CURRENCY": "Валюта",
+    "LANGUAGE": "Язык",
+    "DELETE_DATA": "Удалить данные",
+    "DELETE": "Удалить",
+    "CANCEL": "Отмена",
+    "CANT_RECOVER": "Это действие необратимо!"
   }
 }

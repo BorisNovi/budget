@@ -7,7 +7,7 @@ import { ILanguageOption } from '../common-models/language-option.interface';
 export class LanguageSelectService {
   private readonly translateService = inject(TranslateService);
   private readonly availableLanguages = ['en', 'ru', 'ua'];
-  private readonly currentLangValue = this.availableLanguages[0];
+  private currentLangValue = this.availableLanguages[0];
 
   private readonly languageOptionsSubject = new BehaviorSubject<ILanguageOption[]>([]);
   public languageOptions$ = this.languageOptionsSubject.asObservable();
@@ -21,7 +21,6 @@ export class LanguageSelectService {
       || this.translateService.getBrowserLang()
       || this.translateService.defaultLang;
     this.translateService.setDefaultLang(this.currentLangValue);
-    this.translateService.use(this.translateService.defaultLang);
   }
 
   public buildLanguageOptions() {
@@ -54,5 +53,11 @@ export class LanguageSelectService {
   public changeLanguage(language: ILanguageOption) {
     window.localStorage.setItem('bugget-app-language', language.value);
     this.translateService.use(language.value);
+  }
+
+  public setSavedLang(): void {
+    const savedLang = window.localStorage.getItem('bugget-app-language');
+    const currentOption = this.languageOptionsSubject.getValue().find((option) => option.value === savedLang) || this.languageOptionsSubject.getValue()[0];
+    this.currentLanguageOptionSubject.next(currentOption);
   }
 }

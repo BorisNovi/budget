@@ -5,6 +5,10 @@
     "INCOME": "Income",
     "CATEGORY": "Category"
   },
+  "DIALOG": {
+    "SELECT_DATE": "Select date",
+    "ADD_COMMENT": "Add comment"
+  },
   "CATEGORY": {
     "food": "food",
     "restaurant": "restaurant",
@@ -16,10 +20,39 @@
     "soft": "soft",
     "medical": "medical",
     "clothes": "clothes",
-    "else": "else"
+    "else": "else",
+    "business": "business",
+    "sell": "sell",
+    "gifts": "gifts"
   },
   "ADD_PAGE": {
     "ADD_AMOUNT": "Add amount",
     "COMMENT": "Smth..."
+  },
+  "FUNDS_PAGE": {
+    "FUNDS": "Funds",
+    "COMMON_BALANCE": "Common balance"
+  },
+  "ANALYTICS_PAGE": {
+    "ANALYTICS": "Analytics",
+    "TOTAL": "Total",
+    "TRANSACTIONS": {
+      "EXPENCE_TRANSACTIONS": "Expence transactions",
+      "INCOME_TRANSACTIONS": "Income transactions",
+      "DATE": "Date",
+      "INFO": "Info",
+      "AMOUNT": "Amount",
+      "ACTION": "Action"
+    }
+  },
+  "SETTINGS_PAGE": {
+    "SETTINGS": "Settings",
+    "THEME": "Theme",
+    "CURRENCY": "Currency",
+    "LANGUAGE": "Language",
+    "DELETE_DATA": "Delete data",
+    "DELETE": "Delete",
+    "CANCEL": "Cancel",
+    "CANT_RECOVER": "You can't recover it!"
   }
 }
