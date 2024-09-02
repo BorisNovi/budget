@@ -1,6 +1,6 @@
 {
-  "name": "budget",
-  "version": "0.0.0",
+  "name": "backendless-budget-app",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
